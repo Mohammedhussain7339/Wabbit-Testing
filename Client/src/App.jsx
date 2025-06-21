@@ -15,6 +15,7 @@ import Canvacard from './components/Category-Card/Canvacard';
 import Webdevloper from './components/Category-Card/Webdevloper';
 import UIUX from './components/Category-Card/UIUX';
 import Profile from './page/Profile';
+import GetProfile from "./components/Buyer/profile/Profileget"
 // import PersonalNav from './components/personalinfo/Personalnav';
 
 // import Profileget from '../src/components/Seller/';
@@ -40,6 +41,7 @@ function App() {
 
             {/* Category Route */}
 
+            <Route path="/getprofile" element={<GetProfile />} />
             <Route path="/photocard" element={<Photocard />} />
             <Route path='/mockup' element={<Mockupcard />} />
             <Route path='/invititioncard' element={<Invititioncard />} />

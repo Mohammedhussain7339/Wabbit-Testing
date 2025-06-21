@@ -34,7 +34,7 @@ export const profiledata = async (req, res) => {
       // Update only the fields that are provided in the request body
       profile.firstname = firstname || profile.firstname;
       profile.lastname = lastname || profile.lastname;
-      profile.occuption = occupation || profile.occupation;
+      profile.occupation = occupation || profile.occupation;
       profile.university = university || profile.university;
       profile.region = region || profile.region;
       profile.city = city || profile.city;

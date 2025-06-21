@@ -1,7 +1,7 @@
 import React from 'react';
 import img from '../../assets/Seller/seller.png';
 
-export default function Support() {
+export default function HelpSupport() {
     return (
         <div className='max-md:w-[100vw] h-[80vh] w-[81vw] flex justify-center items-center'>
 

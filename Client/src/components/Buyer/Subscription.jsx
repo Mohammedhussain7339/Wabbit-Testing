@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Payout() {
+export default function Subscription() {
     // const payoutData = [
     //   { title: "Today", value: 20 },
     //   { title: "This Month", value: 200 },
