@@ -14,9 +14,9 @@ export default function Workwithus() {
   ];
 
   return (
-    <div className='w-full   h-auto mt-[100px] cursor-pointer flex justify-center items-center z-10'>
+    <div className='w-full h-[80vh] mt-[100px] cursor-pointer flex justify-center items-center z-10'>
 
-      <div className='max-sm:w-[100%] w-[90%] h-[95%] rounded-2xl  flex flex-col items-center relative bg-bgmain overflow-hidden'>
+      <div className='max-sm:w-[100%]  max-md:h-[80%] max-md:mt-[-50px] w-[90%] h-[95%] rounded-2xl  flex flex-col items-center relative bg-bgmain overflow-hidden'>
 
         {/* Star-Img */}
 
@@ -47,59 +47,59 @@ export default function Workwithus() {
 
         {/* Heading Dev */}
 
-        <h1 className=' pt-3 font-nunito font-bold max-sm:text-[31px] sm:text-[35px] xl:text-[50px] '>
+        <h1 className=' pt-3 font-nunito font-bold text-[50px] max-lg:text-[23px] max-md:pt-10 xl:text-[50px]'>
           Instantly Connect with the Perfect
         </h1>
 
-        <div className='flex gap-2 pt-1 sm:gap-6'>
+        <div className='flex gap-2 pt-1 sm:gap-6 max-md:pt-4'>
 
-          <h2 className='text-maincolor font-[900]  font-nunito text-[31px] sm:text-[35px] xl:text-[50px]'>
+          <h2 className='text-maincolor font-[900]  font-nunito text-[50px] max-lg:text-[23px]'>
             Freelance
           </h2>
 
-          <h2 className='text-[31px] font-nunito font-bold sm:text-[35px] xl:text-[50px]'>
+          <h2 className='font-nunito font-bold text-[50px] max-lg:text-[23px]'>
             Service  For
           </h2>
+
         </div>
 
-        <div className='flex gap-2 pt-1  sm:gap-6'>
+        <div className='flex gap-2 pt-1  sm:gap-6 max-md:pt-4'>
 
-          <h3 className='font-bold text-[31px] font-nunito sm:text-[35px] xl:text-[50px]'>
+          <h3 className='font-bold font-nunito text-[50px] max-lg:text-[23px]'>
             Your
           </h3>
 
-          <h3 className='text-maincolor font-nunito font-[900] text-[31px] sm:text-[35px] xl:text-[50px]'>
+          <h3 className='text-maincolor font-nunito font-[900] text-[50px] max-lg:text-[23px]'>
             Needs!
           </h3>
         </div>
 
         {/* Search */}
 
-        <div className='max-2xl:mt-9 2xl:mt-20 z-10 sm:mr-14 my-16 w-[100%] ml-[390px] '>
+        <div className='z-10 my-16 w-[100%] flex justify-center items-center rounded-lg'>
           <input
             type="search"
             placeholder='what are you loocking for'
-            className=' h-14 pl-5 rounded-lg font-nunito max-sm:text-[21px] bg-white max-sm:w-[300px] sm:w-[450px] lg:w-[700px] xl:w-[800px] 2xl:w-[900px] '
+            className=' max-md:w-[90vw] h-14 pl-10 w-[50vw] rounded-lg font-nunito bg-bgmain '
           />
         </div>
 
 
         {/* WorkWith */}
 
-        <div className='max-sm:hidden w-[90%] bg-black h-14 rounded-3xl flex flex-row items-center gap-36 my-12 text-white'>
-          <h1 className='pl-36 font-nunito font-bold'>
-            Trusted By
-          </h1>
-          {Brand.map((brandItem, index) => (
-            // <img
-            //   key={index}
-            //   src={brandItem.image}
-            //   alt={brandItem.altText}
-            //   className="h-[50%] w-auto object-contain rounded-2xl filter-red"
-            // />
-            <h1></h1>
-          ))}
+        <div className="relative w-full flex flex-col items-center">
+          {/* Search Bar */}
+          <div className="max-sm:hidden w-[90%] bg-black h-14 rounded-3xl flex flex-row items-center gap-36 text-white lg:absolute lg:bottom-0">
+            <h1 className="pl-36 font-nunito font-bold">Trusted By</h1>
+            {Brand.map((brandItem, index) => (
+              <h1 key={index}>
+
+
+              </h1>
+            ))}
+          </div>
         </div>
+
 
       </div>
     </div>

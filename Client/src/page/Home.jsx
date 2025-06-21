@@ -17,6 +17,7 @@ export default function Home() {
     const {isnavbar} = useContext(Mycontext);
     const navigate = useNavigate();
     const accountType = localStorage.getItem('accountType');
+    
     useEffect(() => {
         if(accountType === 'Selling'){
             navigate('/onboardingseller')

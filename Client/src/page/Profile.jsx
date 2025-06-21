@@ -5,6 +5,7 @@ import { MdSupportAgent, MdNewspaper, MdAccountBox,MdLiveHelp } from "react-icon
 import { VscPreview } from "react-icons/vsc";
 
 import { Mycontext } from '../context/Mycontext';
+import Profile  from '../components/Buyer/Profile/Profie';
 import Projects from '../components/Buyer/Project';
 import Subscription from '../components/Buyer/Subscription';
 import HelpSupport from '../components/Buyer/HelpSupport';
@@ -64,7 +65,7 @@ export default function Buyerprofile() {
 
                 <div className='max-md:w-[100%] w-[81%] overflow-scroll  h-[screen]'>
 
-                    <main className='w-[80%] h-screen '>
+                    <main className='w-[80%] h-screen'>
                         {activeComponent === 1 ? <Profile /> : null}
                         {/* {activeComponent === 2 ? <Chat /> : null} */}
                         {activeComponent === 3 ? <Projects /> : null}

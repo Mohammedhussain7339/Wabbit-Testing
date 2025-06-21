@@ -6,7 +6,7 @@ import img from "../../assets/Home/WhyWabbit/img.jpg"
 
 export default function Whywabbit() {
   return (
-    <div className='w-screen h-[100vh] flex items-center justify-center mt-10'>
+    <div className='w-screen h-[100vh] flex items-center justify-center'>
 
       <div className=' lg:h-[100%] xl:h-auto w-[90%] rounded-3xl flex max-sm:flex-col overflow-hidden bg-Thirdbg '>
 

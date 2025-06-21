@@ -3,7 +3,7 @@ import ulogo from "../../assets/Home/FindFreelance/img01.png";
 
 export default function BusinessesSlide() {
   return (
-    <div className="min-h-screen w-full flex flex-col items-center justify-center py-8 px-4 cursor-pointer">
+    <div className="min-h-[70vh] w-full flex flex-col items-center justify-center py-8 px-4 cursor-pointer mt-6">
       {/* Header */}
 
       <h1 className="lg:w-[65%] text-center font-bold text-3xl lg:text-5xl md:text-3xl  sm:text-xl  max-sm:text-[25px] w-[100%] font-nunito">
