@@ -8,23 +8,23 @@ import { FaFacebookF,FaApple } from "react-icons/fa";
 import { Mycontext } from '../../../context/Mycontext';
 
 const Content = () => {
-      const handleSuccess = async (credentialResponse) => {
-    const decoded = jwtDecode(credentialResponse.credential);
-    // decoded contains name, email, picture, sub (Google ID)
-    
-    // Send to backend
-    await axios.post("http://localhost:5000/api/users/google-login", {
-      name: decoded.name,
-      email: decoded.email,
-      googleId: decoded.sub,
-      image: decoded.picture,
-    });
-    localStorage.setItem("userName", res.data.user.name);
-    localStorage.setItem("userId", res.data.user._id);
+const handleSuccess = async (credentialResponse) => {
+  const decoded = jwtDecode(credentialResponse.credential);
 
-    alert("Login successful");
-  };
-  const username=localStorage.getItem('userName');
+  const res = await axios.post("http://localhost:8000/api/google-login", {
+    name: decoded.name,
+    email: decoded.email,
+    googleId: decoded.sub,
+    image: decoded.picture,
+  });
+
+localStorage.setItem("token", res.data.authToken);
+localStorage.setItem("username", res.data.username);
+localStorage.setItem("userId", res.data._id);
+
+  alert("Login successful");
+};
+  const username=localStorage.getItem('username');
 console.log(username,'27')
 
   const {setcreateAccount, setLoginStep} = useContext(Mycontext)

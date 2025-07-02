@@ -9,7 +9,7 @@ const Content = () => {
   const {setcreateAccount, setRegisterStep} = useContext(Mycontext)
   return (
     <>
-     <div className="flex flex-col  gap-3 h-[20%]">
+<div className="flex  flex-col gap-3 h-[20%]">
       <div className="text-[22px] md:text-3xl text-start font-nunito font-bold">
         Create a new account
       </div>

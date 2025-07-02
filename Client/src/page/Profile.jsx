@@ -11,7 +11,7 @@ import Subscription from '../components/Buyer/Subscription';
 import HelpSupport from '../components/Buyer/HelpSupport';
 import Utilavbar from '../util/Utilnavbar';
 import UtilmobileNav from '../util/Utilmobilenav'
-import Profile from "../components/Buyer/profile/profile"
+import Profiles from "../components/Buyer/profile/Profiles"
 export default function Buyerprofile() {
 
     const { activeComponent, setActiveComponent, activeId, setActiveId, isutilnavbar} = useContext(Mycontext);
@@ -66,7 +66,7 @@ export default function Buyerprofile() {
                 <div className='max-md:w-[100%] w-[81%] overflow-scroll  h-[screen]'>
 
                     <main className='w-[80%] h-screen'>
-                        {activeComponent === 1 ? <Profile /> : null}
+                        {activeComponent === 1 ? <Profiles /> : null}
                         {/* {activeComponent === 2 ? <Chat /> : null} */}
                         {activeComponent === 3 ? <Projects /> : null}
                         {activeComponent === 4 ? <Subscription /> : null}

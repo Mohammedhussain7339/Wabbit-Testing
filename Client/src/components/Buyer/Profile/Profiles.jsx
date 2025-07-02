@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import Profilenget from "./Profileget";
 
-function profile() {
+function profiles() {
   const userId = localStorage.getItem("_id");
   const profileId = localStorage.getItem("profileId")
   const [formData, setFormData] = useState({
@@ -237,4 +237,4 @@ function profile() {
   );
 }
 
-export default profile;
+export default profiles;

@@ -15,6 +15,12 @@ try {
   const app = express();
 
   app.use(express.json());
+  // If you are setting this in your Express app:
+app.use((req, res, next) => {
+  res.removeHeader("Cross-Origin-Opener-Policy"); // or avoid setting it
+  next();
+});
+
   app.use(cors({ origin: "http://localhost:5173" })); // Replace with your frontend's URL
   await connectToDb();
 

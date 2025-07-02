@@ -1,5 +1,10 @@
-import User from '../Schema/GoogleLoginSchema.js'
-const googleLogin = async (req, res) => {
+import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
+import User from "../Schema/GoogleLoginSchema.js";
+
+dotenv.config();
+
+export const googleLogin = async (req, res) => {
   const { name, email, googleId, image } = req.body;
 
   try {
@@ -10,11 +15,20 @@ const googleLogin = async (req, res) => {
       await user.save();
     }
 
-    res.status(200).json({ message: "User saved", user });
+    // Generate JWT Token
+    const payload = { _id: user._id };
+    const authToken = jwt.sign(payload, process.env.JWTSECRET);
+
+    res.status(200).json({
+      authToken,
+      _id: user._id,
+      message: "Login successful",
+      success: true,
+      username: user.name,
+      image: user.image,
+    });
   } catch (error) {
     console.error("Google login error:", error);
     res.status(500).json({ message: "Internal server error" });
   }
 };
-
-module.exports = { googleLogin };
