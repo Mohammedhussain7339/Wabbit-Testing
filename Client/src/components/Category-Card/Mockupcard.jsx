@@ -1,4 +1,5 @@
 import React,{useState,useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Home/Navbar/Navbar";
 import axios from "axios";
 
@@ -7,6 +8,10 @@ export default function Mockupcard() {
   const [profiles, setProfiles] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+const navigate=useNavigate();  
+  const handleViewProfile = (userId) => {
+  navigate(`/FreelancerMainPage/${userId}`);
+};
 
 
   // Fetch profiles based on skillswork
@@ -16,7 +21,7 @@ export default function Mockupcard() {
 
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/getprofile?skills=${skill}`
+  `http://localhost:8000/api/getprofile?skills=${skill}&check=true`
       );
       setProfiles(response.data.data);
       console.log(response.data.data)
@@ -162,9 +167,13 @@ export default function Mockupcard() {
 
               {/* Rating & Hire Button Section */}
               <div className="flex py-5 justify-between items-center">
-                <h1 className="text-left text-sm md:text-base">
-                  {"⭐4.5"}
-                </h1>
+<button
+  className="py-2 px-4 bg-blue-600 text-white rounded-full hover:bg-opacity-90 transition"
+  onClick={() => handleViewProfile(editor.userId)}
+>
+  View Profile
+</button>
+
                 <button className="py-2 px-4 bg-maincolor text-white rounded-full hover:bg-opacity-90 transition">
                   Hire Me
                 </button>

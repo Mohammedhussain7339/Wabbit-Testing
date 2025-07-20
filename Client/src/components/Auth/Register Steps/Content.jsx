@@ -1,11 +1,29 @@
 import React, { useContext } from 'react';
 import { Mycontext } from '../../../context/Mycontext';
-
+import axios from 'axios';
 import { MdEmail } from "react-icons/md";
 import { FcGoogle } from "react-icons/fc";
+import { GoogleLogin } from '@react-oauth/google';
+import {jwtDecode} from "jwt-decode";
 
 const Content = () => {
-    
+    const handleSuccess = async (credentialResponse) => {
+  const decoded = jwtDecode(credentialResponse.credential);
+
+  const res = await axios.post("http://localhost:8000/api/google-login", {
+    name: decoded.name,
+    email: decoded.email,
+    googleId: decoded.sub,
+    image: decoded.picture,
+  });
+
+localStorage.setItem("token", res.data.authToken);
+localStorage.setItem("username", res.data.username);
+localStorage.setItem("userId", res.data._id);
+localStorage.setItem("")
+
+  alert("Login successful");
+};
   const {setcreateAccount, setRegisterStep} = useContext(Mycontext)
   return (
     <>
@@ -22,10 +40,11 @@ const Content = () => {
     </div>
 
     <div className="h-[60%] flex flex-col overflow-hidden gap-3">
-      <div className="py-2 text-center w-full cursor-pointer border rounded-xl border-[rgb(0,0,0,0.2)] font-bold flex-row flex items-center justify-center gap-[5%]">
-        <FcGoogle className="text-[16px] " />
-        <p className="text-[16px]">Continue With Google</p>
-      </div>
+                      <GoogleLogin 
+      onSuccess={handleSuccess}
+      onError={() => console.log("Login Failed")}
+    />
+
       <div className="py-2 text-center w-full cursor-pointer border rounded-xl border-[rgb(0,0,0,0.2)] font-bold flex-row flex items-center justify-center gap-[5%]" onClick={()=>{setRegisterStep(1)}}>
         <MdEmail className="text-[16px]"/>
         <p className="text-[16px]">Continue With Email</p>

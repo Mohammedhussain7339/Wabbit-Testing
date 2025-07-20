@@ -1,5 +1,6 @@
 import dotenv from "dotenv";
 import UserSchema from "../Schema/UserSchema.js";
+import Profile from "../Schema/ProfileSchema.js"; // make sure to import ProfileSchema
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
@@ -64,12 +65,11 @@ export const createUser = async (req, res) => {
     // Generate JWT token
     const payload = { _id: newUser._id };
     const authToken = jwt.sign(payload, process.env.JWTSECRET);
-
     res.status(200).send({
       authToken,
       _id: newUser._id,
       message: "User created successfully",
-      success: true,
+      success: true, 
       username: newUser.username,
       accountType: newUser.freelancerType,
     });
@@ -118,11 +118,15 @@ export const loginUser = async (req, res) => {
     // Generate JWT token
     const payload = { _id: user._id };
     const authToken = jwt.sign(payload, process.env.JWTSECRET);
+const userProfile = await Profile.findOne({ userId: user._id });
+
 
     return res.status(200).json({
       _id: user._id,
+      profileId: userProfile?._id || null,
       authToken,
       username: user.username,
+      accountType: user.freelancerType, 
       message: "User login successfully",
       success: true,
     });

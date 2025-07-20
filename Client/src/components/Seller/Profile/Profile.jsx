@@ -1,32 +1,27 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
-import { IoLocationOutline, IoCameraOutline } from "react-icons/io5";
+import React, {  useEffect,  useState } from "react";
+import { IoLocationOutline } from "react-icons/io5";
 import Freelancer1 from "../Profile/Modals/Freelancer1";
 import Freelancer2 from "../Profile/Modals/Freelancer2";
 import Freelancer3 from "../Profile/Modals/Freelancer3";
-import { useNavigate } from "react-router-dom";
-import { Mycontext } from "../../../context/Mycontext";
 import axios from "axios";
 
 export default function Profile() {
   const [profileImg, setProfileImg] = useState("");
 
-  const { imagePreview,handleFileChange } = useContext(Mycontext);
 
   const profileId = localStorage.getItem("profile_id");
-  const fileInputRef = useRef(null);
 
 
 
   const [activeProfile, setActiveProfile] = useState("Freelancer1"); // Active tab state
   const username = localStorage.getItem("username");
-  const navigate = useNavigate();
-  const token = localStorage.getItem("token");
+  
 
-  useEffect(() => {
-    if (!token) {
-      navigate("/");
-    }
-  }, [token, navigate]);
+  // useEffect(() => {
+  //   if (!token) {
+  //     navigate("/");
+  //   }
+  // }, [token, navigate]);
 
 
 
@@ -66,37 +61,11 @@ export default function Profile() {
 
               <div className="flex flex-col items-center relative">
 
-                <div className="w-[163px] cursor-pointer h-[164px] rounded-full border-2 border-black flex justify-center items-center">
+                <div className="w-[163px] cursor-pointer h-[164px] rounded-full bg-maincolor border-2 border-black flex justify-center items-center">
+<div className="avatar text-6xl text-white">
+  {username && username[0].toUpperCase()}
+</div>
 
-                  <input
-                    type="file"
-                    ref={fileInputRef}
-                    style={{ display: "none" }}
-                    accept="image/*"
-                    
-                    // onChange={handleFileChange}
-                  />
-
-                  <div onClick={() => fileInputRef.current.click()} className="">
-                    {/* Show the image preview or the profile image if already fetched */}
-
-                    {imagePreview ? (
-                      <img
-                        src={imagePreview}
-                        alt="Profile Preview"
-                        className="bg-center bg-cover h-[164px] w-[163px]"
-                      />
-
-                    ) : profileImg ? (
-                      <img
-                        src={profileImg}
-                        alt="Profile Image"
-                        className="bg-center bg-cover h-[164px] w-[163px]"
-                      />
-                    ) : (
-                      <IoCameraOutline className="text-4xl cursor-pointer" />
-                    )}
-                  </div>
 
                 </div>
               </div>

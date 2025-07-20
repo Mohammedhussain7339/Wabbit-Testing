@@ -21,11 +21,11 @@ const handleSuccess = async (credentialResponse) => {
 localStorage.setItem("token", res.data.authToken);
 localStorage.setItem("username", res.data.username);
 localStorage.setItem("userId", res.data._id);
+localStorage.setItem("")
 
   alert("Login successful");
 };
   const username=localStorage.getItem('username');
-console.log(username,'27')
 
   const {setcreateAccount, setLoginStep} = useContext(Mycontext)
   return (

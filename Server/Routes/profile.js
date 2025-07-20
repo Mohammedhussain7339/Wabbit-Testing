@@ -1,5 +1,5 @@
 import express from "express";
-import {profiledata ,getprofileimg ,getprofile } from "../Controller/profile.js"
+import {profiledata ,getprofileimg ,getprofile,getAllProfiles,updateProfileCheck  } from "../Controller/profile.js"
 
 const router = express.Router();
 
@@ -7,5 +7,7 @@ const router = express.Router();
 router.post("/profile",profiledata);
 router.get("/getprofile",getprofile);
 router.get("/getprofileimg",getprofileimg);
+router.get("/all", getAllProfiles);
+router.put("/updateProfileCheck",updateProfileCheck )
 
 export default router;

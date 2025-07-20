@@ -3,10 +3,19 @@ import { FaPlus } from 'react-icons/fa'; // Importing plus icon from react-icons
 import axios from 'axios';
 function Freelancer2() {
   const fileInputRef = useRef(null);
+  const [title,setTitle] = useState(null);
+  const [about,setAbout] = useState(null);
   const [imagePreview, setImagePreview] = useState(null);
   const [uploadedImageUrl, setUploadedImageUrl] = useState(null); // ✅ Store uploaded image URL
   const [isFileSelected, setIsFileSelected] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
+
+    const handleTitleChange = (e) => {
+    setTitle(e.target.value);
+  };
+  const handleAboutChange = (e)=>{
+    setAbout(e.target.value);
+  }
 
   // ✅ Log selected file for debugging
   useEffect(() => {
@@ -35,60 +44,60 @@ function Freelancer2() {
     setImagePreview(null);
   };
 
-  // ✅ Upload when "Publish" is Clicked
-  const handleUploadProject = async () => {
-    if (!selectedFile) {
-      alert("Please select a file first!");
-      return;
-    }
 
-    const data = new FormData();
-    data.append("file", selectedFile);
-    data.append("upload_preset", "Upload Project");
-    data.append("cloud_name", "dvnrzuumg");
+  const [selectedCategories, setSelectedCategories] = useState([]); // ⬅️ new state
 
-    try {
-      const res = await fetch("https://api.cloudinary.com/v1_1/dvnrzuumg/image/upload", {
-        method: "POST",
-        body: data,
-      });
+const handleCategoryChange = (category) => {
+  setSelectedCategories((prev) =>
+    prev.includes(category)
+      ? prev.filter((item) => item !== category)
+      : [...prev, category]
+  );
+};
 
-      if (!res.ok) throw new Error("Failed to upload image");
+const userId= localStorage.getItem('_id');
+console.log(userId);
 
-      const result = await res.json();
-      console.log("Cloudinary Upload Result:", result);
+const handleUploadProject = async () => {
+if (!selectedFile || !title || selectedCategories.length === 0 || !about || !userId) {
+  alert("Please fill all fields before publishing!");
+  return;
+}
 
-      setUploadedImageUrl(result.secure_url);
-      alert("Image uploaded successfully!");
+  const data = new FormData();
+  data.append("file", selectedFile);
+  data.append("upload_preset", "Upload Project");
+  data.append("cloud_name", "dvnrzuumg");
 
-      closeModal();
-    } catch (error) {
-      console.error("Error uploading the image:", error.message);
-    }
+  try {
+    const res = await fetch("https://api.cloudinary.com/v1_1/dvnrzuumg/image/upload", {
+      method: "POST",
+      body: data,
+    });
 
-  };
+    if (!res.ok) throw new Error("Failed to upload image");
 
-  // const fetchdata = async () => {
-  //   if (profileId) {
-  //     try {
-  //       const response = await axios.get(
-  //         `http://localhost:8000/api/getprofileimg?id=${profileId}`
-  //       );
+    const result = await res.json();
+    const imageUrl = result.secure_url;
+    setUploadedImageUrl(imageUrl);
 
+    // Save to backend
+    const response = await axios.post("http://localhost:8000/api/portfolio", {
+      userId,
+      title,
+      projectCategorise: selectedCategories,
+      portfolio: imageUrl,
+      about,
+    });
 
-  //       const ProfileImg = response.data.imageUrl;
+    alert("Project saved to database!");
+    closeModal();
+  } catch (error) {
+    console.error("Error:", error.message);
+    alert("Something went wrong!");
+  }
+};
 
-  //       setProfileImg(ProfileImg);
-
-  //     } catch (error) {
-  //       console.log(error, "errorror");
-  //     }
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchdata();
-  // }, [profileId]);
 
 
   return (
@@ -145,14 +154,31 @@ function Freelancer2() {
                 <h1 className="mt-4 mx-5 text-lg">How Would You Categorize This Project?</h1>
                 <div className="flex flex-wrap justify-between">
 
-                  {['Graphic Design', 'Web Development', 'App Development', 'UI/UX Design', 'Content Writing', 'SEO'].map((category, index) => (
-                    <div key={index} className="w-full shadow-lg rounded-md sm:w-1/3 p-1 flex items-center">
-                      <div className="w-full p-2 flex items-center">
-                        <input type="checkbox" className="mx-2" />
-                        <label className="sm:text-[15px] lg:text-[15px]">{category}</label>
-                      </div>
-                    </div>
-                  ))}
+{['Graphic Design', 'Web Development', 'App Development', 'UI/UX Design', 'Content Writing', 'SEO'].map((category, index) => (
+  <div key={index} className="w-full shadow-lg rounded-md sm:w-1/3 p-1 flex items-center">
+    <div className="w-full p-2 flex items-center">
+      <input
+        type="checkbox"
+        className="mx-2"
+        onChange={() => handleCategoryChange(category)}
+        checked={selectedCategories.includes(category)}
+      />
+      <label className="sm:text-[15px] lg:text-[15px]">{category}</label>
+    </div>
+  </div>
+))}
+<div className="mt-4 w-full">
+  <label className="block text-lg font-semibold mb-2 text-gray-700">
+    ✍️ Write About Yourself <span className="text-sm text-gray-500">(100–200 words)</span>
+  </label>
+  <textarea
+    className="w-full border border-gray-300 rounded-md p-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
+    placeholder="Tell us about your experience, skills, and what makes you unique..."
+    rows={6}
+    value={about}
+    onChange={handleAboutChange}
+  />
+</div>
 
                 </div>
               </div>
