@@ -43,6 +43,11 @@ const LoginStep1 = () => {
         localStorage.setItem("token", result.authToken);
         localStorage.setItem("_id", result._id);
         localStorage.setItem("username", result.username);
+        localStorage.setItem("userType", result.accountType);
+        localStorage.setItem("profile_id", result.profileId);
+
+  
+
         setIsModal(false); // Close the modal
         setLoginStep(0); // Reset the login step to 0 (initial step)
       } else {

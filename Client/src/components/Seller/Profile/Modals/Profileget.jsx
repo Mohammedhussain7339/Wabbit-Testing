@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BiSolidEdit } from "react-icons/bi";
 
 import axios from "axios";
-function profileget({index,setIndex}) {
+function Profileget({ index, setIndex }) {
 
   const profileId = localStorage.getItem("profile_id");
   
@@ -40,8 +40,8 @@ function profileget({index,setIndex}) {
     <div>
       {profiledata.map((item, index) => (
         <div
-          key={index}
-          className="w-full  sm:w-full lg:w-full flex flex-col p-6 rounded-lg shadow-lg">
+        key={index}
+        className="w-full  sm:w-full lg:w-full flex flex-col p-6 rounded-lg shadow-lg">
           <div className="flex  flex-col sm:flex-row justify-between mb-4">
             <div className="w-full sm:w-[48%] mb-4 sm:mb-0">
               <label
@@ -249,12 +249,12 @@ function profileget({index,setIndex}) {
               Submit
             </button>
           ) : (
-            <button
-              type="submit"
-              onClick={updateHandle}
-              className="bg-maincolor text-white px-5 py-2 rounded-lg mt-3 mb-14">
-              Update
-            </button>
+<button
+  type="button"
+  onClick={updateHandle}
+  className="bg-maincolor text-white px-5 py-2 rounded-lg mt-3 mb-14">
+  Update
+</button>
           )}
         </div>
       ))}
@@ -262,4 +262,4 @@ function profileget({index,setIndex}) {
   );
 }
 
-export default profileget;
+export default Profileget;

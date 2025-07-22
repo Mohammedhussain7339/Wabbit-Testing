@@ -15,6 +15,11 @@ import Canvacard from './components/Category-Card/Canvacard';
 import Webdevloper from './components/Category-Card/Webdevloper';
 import UIUX from './components/Category-Card/UIUX';
 import Profile from './page/Profile';
+import GetProfile from "./components/Buyer/profile/Profileget"
+import Portfolio from './components/FreelancerData/Modal/Portfolio1'
+import FreelancerMainPage from './components/FreelancerData/FreelancerMainPage';
+import Profileget from './components/Seller/Profile/Modals/profileget';
+import AdminPanel from './Admin-Dashboard/AdminPanel';
 // import PersonalNav from './components/personalinfo/Personalnav';
 
 // import Profileget from '../src/components/Seller/';
@@ -36,10 +41,13 @@ function App() {
             {/* <Route path="/profileget" element={<Profileget />} /> */}
             <Route path='/onboardingseller' element={<Freelancedashboard />} />
             <Route path='/profile' element={<Profile />} />
+            <Route path='/profileget' element={<Profileget />} />
+            <Route path="/FreelancerMainPage/:userId" element={<FreelancerMainPage />} />
+            <Route path="/AdminPanel" element={< AdminPanel/>} />
 
 
             {/* Category Route */}
-
+            <Route path="/getprofile" element={<GetProfile />} />
             <Route path="/photocard" element={<Photocard />} />
             <Route path='/mockup' element={<Mockupcard />} />
             <Route path='/invititioncard' element={<Invititioncard />} />

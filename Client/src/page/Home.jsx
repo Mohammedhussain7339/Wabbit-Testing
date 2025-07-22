@@ -16,8 +16,8 @@ import { useNavigate } from 'react-router-dom'
 export default function Home() {
     const { isnavbar, ispeofile, setprofile } = useContext(Mycontext);
     const navigate = useNavigate();
-    const accountType = localStorage.getItem('accountType');
-
+    const accountType = localStorage.getItem('userType');
+    
     useEffect(() => {
         if (accountType === 'Selling') {
             navigate('/onboardingseller')

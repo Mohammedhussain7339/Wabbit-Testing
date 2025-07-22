@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import ClickAwayListener from "react-click-away-listener";
 import Navbar from "../Home/Navbar/Navbar";
 import FAQContent from "../Requirement/FAQContent";
@@ -9,6 +9,10 @@ function Videoeditor() {
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [skills, setSkills] = useState("Video Editor"); // Default to "Photo Editing"
+const navigate=useNavigate();  
+  const handleViewProfile = (userId) => {
+  navigate(`/FreelancerMainPage/${userId}`);
+};
 
 
   // Fetch profiles based on skillswork
@@ -110,10 +114,7 @@ function Videoeditor() {
                 <hr className="w-[80%] mx-auto mt-4" />
 
                 {/* Rating & Hire Button Section */}
-                <div className="flex py-5 justify-between items-center">
-                  <h1 className="text-left text-sm md:text-base">
-                    {"⭐4.3"}
-                  </h1>
+                <div className="flex py-5 gap-2 flex-row-reverse items-center">
                   <button
                     className="py-2 px-4 bg-maincolor text-white rounded-full hover:bg-opacity-90 transition"
                     onClick={() => {
@@ -121,6 +122,13 @@ function Videoeditor() {
                     }}
                   >Hire Me
                   </button>
+<button
+  className="py-2 px-4 bg-blue-600 text-white rounded-full hover:bg-opacity-90 transition"
+  onClick={() => handleViewProfile(editor.userId)}
+>
+  View Profile
+</button>
+
                 </div>
               </div>
             ))}

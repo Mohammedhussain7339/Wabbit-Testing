@@ -31,6 +31,7 @@ function Freelancer1() {
     languages: [], // Start with an empty array
     contact: "",
     email: "",
+    check:false,
   });
 
   const handleAddLanguage = () => {
@@ -111,20 +112,21 @@ function Freelancer1() {
         }
 
         // Reset the form if necessary
-        setProfiledata({
-          firstname: "",
-          lastname: "",
-          occupation: "",
-          university: "",
-          region: "",
-          city: "",
-          portfoliolinks: "",
-          description: "",
-          skills: [],
-          contact: "",
-          email: "",
-          languages: "",
-        });
+          setProfiledata({
+            firstname: "",
+            lastname: "",
+            occupation: "",
+            university: "",
+            region: "",
+            city: "",
+            portfoliolinks: "",
+            description: "",
+            skills: [],
+            contact: "",
+            email: "",
+            languages: "",
+            check:""
+          });
 
         
       })
@@ -136,19 +138,20 @@ function Freelancer1() {
   };
 
   const [index, setIndex] = useState(true)
+const [showProfile, setShowProfile] = useState(false);
 
 
   return (
     <>
-      {profileId && index == true ? <Profileget index={index} setIndex={setIndex} >
-      </Profileget> :
-
+{profileId && showProfile ? (
+  <Profileget index={showProfile} setIndex={setShowProfile} />
+) : 
         <form className="flex flex-col w-full min-h-screen 320:p-0 p-4" onSubmit={handleSubmit}>
 
           {/* -------------------data entry--------------------- */}
 
           <div className="w-full   sm:w-full lg:w-full flex flex-col p-6 rounded-lg shadow-lg">
-            {profileId ? <button className="bg-blue-400 w-16 p-1 rounded-full text-white" onClick={() => setIndex(true)}>Back</button> : null}
+            {profileId ? <button className="bg-blue-400 w-16 p-1 rounded-full text-white" onClick={() => setShowProfile(true)}>Back</button> : null}
             <div className="flex  flex-col sm:flex-row justify-between mb-4">
               <div className="w-full sm:w-[48%] mb-4 sm:mb-0">
                 <label

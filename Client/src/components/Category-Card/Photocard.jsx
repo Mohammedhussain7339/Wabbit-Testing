@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Home/Navbar/Navbar";
 
 export default function Photocard() {
@@ -8,6 +9,10 @@ export default function Photocard() {
   const [loading, setLoading] = useState(false);
 
   const [skills, setSkills] = useState("Photo Editor"); // Default to "Photo Editing"
+const navigate=useNavigate();  
+  const handleViewProfile = (userId) => {
+  navigate(`/FreelancerMainPage/${userId}`);
+};
 
   // Fetch profiles based on skillswork
   const fetchProfiles = async (skill) => {
@@ -89,13 +94,20 @@ export default function Photocard() {
                   </div>
                   <hr className="w-[80%] mx-auto mt-4" />
 
-                  <div className="flex py-5 justify-between items-center">
-                    <h1 className="text-left text-sm md:text-base">
+                  <div className="flex py-5 flex-row-reverse items-center">
+                    {/* <h1 className="text-left text-sm md:text-base">
                       {editor.rating || "⭐0.0"}
-                    </h1>
+                    </h1> */}
                     <button className="py-2 px-4 bg-maincolor text-white rounded-full hover:bg-opacity-90 transition">
                       Hire Me
                     </button>
+<button
+  className="py-2 px-4 bg-blue-600 text-white rounded-full hover:bg-opacity-90 transition"
+  onClick={() => handleViewProfile(editor.userId)}
+>
+  View Profile
+</button>
+
                   </div>
                 </div>
               ))

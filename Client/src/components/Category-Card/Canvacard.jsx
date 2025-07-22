@@ -1,15 +1,19 @@
-import { useLocation } from "react-router-dom";
+import { useLocation,useNavigate } from "react-router-dom";
 import {useEffect,useState} from "react";
 import axios from "axios";
 import Navbar from "../Home/Navbar/Navbar";
 
     export default function Canvacard() {
+      const navigate=useNavigate();
       const [profiles, setProfiles] = useState([]);
       const [error, setError] = useState(null);
       const [loading, setLoading] = useState(false);
     
       const [skillswork, setSkillswork] = useState("Canva Expert"); // Default to "Photo Editing"
-    
+      const handleViewProfile = (userId) => {
+  navigate(`/FreelancerMainPage/${userId}`);
+};
+
       // Fetch profiles based on skillswork
       const fetchProfiles = async (skill) => {
         setLoading(true);
@@ -107,13 +111,17 @@ import Navbar from "../Home/Navbar/Navbar";
                   </div>
                   <hr className="w-[80%] mx-auto mt-4" />
 
-                  <div className="flex py-5 justify-between items-center">
-                    <h1 className="text-left text-sm md:text-base">
-                      {editor.rating || "⭐0.0"}
-                    </h1>
+                  <div className="flex py-5 flex-row-reverse items-center">
                     <button className="py-2 px-4 bg-maincolor text-white rounded-full hover:bg-opacity-90 transition">
                       Hire Me
                     </button>
+<button
+  className="py-2 px-4 bg-blue-600 text-white rounded-full hover:bg-opacity-90 transition"
+  onClick={() => handleViewProfile(editor.userId)}
+>
+  View Profile
+</button>
+
                   </div>
                 </div>
               ))

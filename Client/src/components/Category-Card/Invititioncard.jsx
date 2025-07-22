@@ -1,4 +1,5 @@
 import React, { useEffect,useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Home/Navbar/Navbar";
 export default function Invitioncard() {
@@ -7,7 +8,11 @@ export default function Invitioncard() {
   const [profiles, setProfiles] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
-
+  const navigate=useNavigate();  
+    const handleViewProfile = (userId) => {
+    navigate(`/FreelancerMainPage/${userId}`);
+  };
+  
 
   // Fetch profiles based on skillswork
   const fetchProfiles = async (skill) => {
@@ -161,13 +166,17 @@ export default function Invitioncard() {
               <hr className="w-[80%] mx-auto mt-4" />
 
               {/* Rating & Hire Button Section */}
-              <div className="flex py-5 justify-between items-center">
-                <h1 className="text-left text-sm md:text-base">
-                  {"⭐4.5"}
-                </h1>
+              <div className="flex py-5 flex-row-reverse items-center">
                 <button className="py-2 px-4 bg-maincolor text-white rounded-full hover:bg-opacity-90 transition">
                   Hire Me
                 </button>
+<button
+  className="py-2 px-4 bg-blue-600 text-white rounded-full hover:bg-opacity-90 transition"
+  onClick={() => handleViewProfile(editor.userId)}
+>
+  View Profile
+</button>
+
               </div>
             </div>
           ))}

@@ -2,6 +2,8 @@ import express from "express";
 import authRouter from "./Routes/auth.js"
 import profileRouter from "./Routes/profile.js"
 import portfolioRouter from "./Routes/portfolio.js"
+import normaluserRouter from "./Routes/normaluser.js"
+import googleuserRouter from "./Routes/googleuser.js";
 import cors from "cors";
 import dotenv from "dotenv";
 import connectToDb from "./db/Db.js";
@@ -13,12 +15,20 @@ try {
   const app = express();
 
   app.use(express.json());
+  // If you are setting this in your Express app:
+app.use((req, res, next) => {
+  res.removeHeader("Cross-Origin-Opener-Policy"); // or avoid setting it
+  next();
+});
+
   app.use(cors({ origin: "http://localhost:5173" })); // Replace with your frontend's URL
   await connectToDb();
 
   app.use("/auth" , authRouter);
   app.use("/api", profileRouter)
   app.use("/api", portfolioRouter)
+  app.use("/api", normaluserRouter)
+  app.use("/api",googleuserRouter)
   
 
   app.get("/", (req, res) => {

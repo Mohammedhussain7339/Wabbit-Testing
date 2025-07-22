@@ -17,6 +17,7 @@ export const profiledata = async (req, res) => {
       contact,
       email,
       imageUrl,
+      check,
     } = req.body;
 
     console.log("Received userId:", userId);
@@ -34,7 +35,7 @@ export const profiledata = async (req, res) => {
       // Update only the fields that are provided in the request body
       profile.firstname = firstname || profile.firstname;
       profile.lastname = lastname || profile.lastname;
-      profile.occuption = occupation || profile.occupation;
+      profile.occupation = occupation || profile.occupation;
       profile.university = university || profile.university;
       profile.region = region || profile.region;
       profile.city = city || profile.city;
@@ -72,6 +73,7 @@ export const profiledata = async (req, res) => {
       contact,
       email,
       imageUrl,
+      check,
     });
 
     const savedProfile = await newProfile.save();
@@ -94,48 +96,73 @@ export const profiledata = async (req, res) => {
 // Fetch profile data
 export const getprofile = async (req, res) => {
   try {
-    const { userId, id, skills } = req.query; // Retrieve 'userId', 'id', and 'skillswork' from query params
+    const { userId, id, skills, check } = req.query;
 
-    let profiles;
+    let profiles; // ✅ declare it first
 
     if (id) {
-      // Fetch a specific profile by ID
       profiles = await ProfileSchema.findById(id);
-
       if (!profiles) {
         return res.status(404).json({ error: "Profile not found" });
       }
     } else if (userId) {
-      // Fetch a specific profile by userId
       profiles = await ProfileSchema.findOne({ userId });
-
       if (!profiles) {
-        return res
-          .status(404)
-          .json({ error: "Profile not found for the given userId" });
+        return res.status(404).json({ error: "Profile not found for the given userId" });
       }
+    } else if (skills && check === "true") {
+      profiles = await ProfileSchema.find({
+        skills: { $regex: skills, $options: "i" },
+        check: true,
+      });
     } else if (skills) {
-      // Fetch profiles where 'skillswork' matches (case-insensitive)
       profiles = await ProfileSchema.find({
         skills: { $regex: skills, $options: "i" },
       });
     } else {
-      // Fetch all profiles
       profiles = await ProfileSchema.find();
     }
 
-    // Send the fetched data
     res.status(200).json({ data: profiles });
   } catch (error) {
-    console.error(
-      "Internal server error at get profile data controller 🔴:",
-      error
-    );
-
+    console.error("Internal server error at get profile data controller 🔴:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
 
+export const getAllProfiles=async(req,res)=>{
+  try{
+    const profiledata = await ProfileSchema.find().lean(); // 👈 .lean() removes Mongoose overhead
+    res.status(200).json({data:profiledata});
+    
+  }
+  catch(error){
+    console.error("Internal server error at getAllProfiles 🔴:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+}
+
+// PUT /api/updateProfileCheck
+export const updateProfileCheck = async (req, res) => {
+  try {
+    const { id, check } = req.body;
+
+    if (!id) return res.status(400).json({ error: "Profile ID is required" });
+
+    const updated = await ProfileSchema.findByIdAndUpdate(
+      id,
+      { check },
+      { new: true }
+    );
+
+    if (!updated) return res.status(404).json({ error: "Profile not found" });
+
+    res.status(200).json({ message: "Check updated", data: updated });
+  } catch (err) {
+    console.error("Error updating check 🔴:", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+};
 
 export const getprofileimg = async (req, res) => {
   try {

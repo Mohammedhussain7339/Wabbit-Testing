@@ -4,10 +4,11 @@ import { Schema } from "mongoose";
 const PortfolioSchema = new Schema(
   {
     userId: {
-      type: Schema.Types.ObjectId,
+  type: mongoose.Schema.Types.ObjectId,
       ref: "User", 
       required: true,
     },
+
     title: {
       type: String,
       required: true,
@@ -19,6 +20,9 @@ const PortfolioSchema = new Schema(
     portfolio: {
       type: String,
     },
+    about:{
+      type:String,
+    }
   },
   { timestamps: true } 
 );
