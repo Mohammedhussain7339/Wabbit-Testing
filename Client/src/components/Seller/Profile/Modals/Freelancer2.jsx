@@ -9,13 +9,15 @@ function Freelancer2() {
   const [uploadedImageUrl, setUploadedImageUrl] = useState(null); // ✅ Store uploaded image URL
   const [isFileSelected, setIsFileSelected] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
-
+  const [url,setUrl]=useState(null)
     const handleTitleChange = (e) => {
     setTitle(e.target.value);
   };
   const handleAboutChange = (e)=>{
     setAbout(e.target.value);
   }
+  const handleUrlChange = (e) => setUrl(e.target.value);
+
 
   // ✅ Log selected file for debugging
   useEffect(() => {
@@ -88,6 +90,7 @@ if (!selectedFile || !title || selectedCategories.length === 0 || !about || !use
       projectCategorise: selectedCategories,
       portfolio: imageUrl,
       about,
+      url,
     });
 
     alert("Project saved to database!");
@@ -101,110 +104,139 @@ if (!selectedFile || !title || selectedCategories.length === 0 || !about || !use
 
 
   return (
-    <div>
-      {/* Show upload button if no file is selected */}
-      {!isFileSelected && (
-        <div className='w-full p-2 h-[300px] rounded-md shadow-lg'>
-          <div className='w-full h-full border-2 border-black flex flex-col justify-center items-center'>
-            <div
-              className='w-[60px] h-[60px] bg-blue-300 rounded-full flex justify-center items-center cursor-pointer'
-              onClick={handleIconClick} // ✅ Clicking opens file input
-            >
-              <FaPlus className='text-white text-2xl' />
+<div className="w-full">
+  {/* Upload Placeholder */}
+  {!isFileSelected && (
+    <div className="w-full p-2 h-[300px] rounded-md shadow-lg">
+      <div className="w-full h-full border-2 border-dashed border-gray-400 flex flex-col justify-center items-center bg-gray-50">
+        <div
+          className="w-[60px] h-[60px] bg-blue-500 rounded-full flex justify-center items-center cursor-pointer"
+          onClick={handleIconClick}
+        >
+          <FaPlus className="text-white text-2xl" />
+          <input
+            type="file"
+            ref={fileInputRef}
+            style={{ display: "none" }}
+            onChange={handleFileChange}
+          />
+        </div>
+        <p className="mt-2 text-gray-600 text-sm">Click to select a file</p>
+      </div>
+    </div>
+  )}
+
+  {/* Modal */}
+  {isFileSelected && (
+    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 flex justify-center items-center z-50 p-4">
+      <div className="bg-white shadow-lg w-full max-w-6xl rounded-lg p-4 overflow-auto max-h-[95vh]">
+        <div className="flex flex-col md:flex-row gap-4">
+          {/* Left Side - Image & URL */}
+          <div className="w-full md:w-[35%] flex flex-col shadow-md rounded-lg p-4 bg-gray-50">
+            {imagePreview && (
+              <img
+                src={imagePreview}
+                alt="Selected File"
+                className="w-full h-64 object-cover rounded-md shadow-md mb-4"
+              />
+            )}
+            <div>
+              <label className="block text-base font-semibold mb-2 text-gray-800">
+                🔗 Enter Your Video or Image URL
+              </label>
               <input
-                type="file"
-                ref={fileInputRef}
-                style={{ display: "none" }}
-                onChange={handleFileChange} // ✅ Only Select, No Upload
+                type="url"
+                className="w-full border border-gray-300 rounded-md p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+                placeholder="https://example.com/project"
+                value={url}
+                onChange={handleUrlChange}
+              />
+            </div>
+          </div>
+
+          {/* Right Side - Form Inputs */}
+          <div className="w-full md:w-[65%]">
+            <div className="mb-4">
+              <label className="block text-base font-semibold mb-2">📌 Project Title</label>
+              <input
+                type="text"
+                className="w-full border border-gray-400 p-2 rounded-md"
+                placeholder="Enter project title"
+                value={title}
+                onChange={handleTitleChange}
               />
             </div>
 
+            <div className="mb-4">
+              <label className="block text-base font-semibold mb-2">📂 Project Categories</label>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "Graphic Design",
+                  "Web Development",
+                  "App Development",
+                  "UI/UX Design",
+                  "Content Writing",
+                  "SEO",
+                ].map((category, index) => (
+                  <label
+                    key={index}
+                    className="flex items-center w-full sm:w-[48%] md:w-[30%] bg-white border border-gray-300 rounded-md px-3 py-2 shadow-sm"
+                  >
+                    <input
+                      type="checkbox"
+                      className="mr-2"
+                      checked={selectedCategories.includes(category)}
+                      onChange={() => handleCategoryChange(category)}
+                    />
+                    <span className="text-sm">{category}</span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            <div className="mb-4">
+              <label className="block text-base font-semibold mb-2">
+                ✍️ Write About Yourself <span className="text-sm text-gray-500">(100–200 words)</span>
+              </label>
+              <textarea
+                className="w-full border border-gray-300 rounded-md p-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
+                placeholder="Tell us about your experience, skills, and what makes you unique..."
+                rows={6}
+                value={about}
+                onChange={handleAboutChange}
+              />
+            </div>
           </div>
         </div>
-      )}
 
-      {/* Modal for file selection confirmation */}
-      {isFileSelected && (
-        <div className="fixed top-0 left-0 w-full h-full bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-white shadow-lg w-full max-w-[90%] sm:max-w-[90%] md:max-w-[800px] lg:max-w-[1000px] p-4 rounded-lg overflow-hidden">
-            <div className="flex flex-col md:flex-row">
-              {/* Image Preview */}
-              <div className="w-full shadow-lg md:w-[35%] h-[300px] mx-1 mb-4 md:mb-0 flex items-center justify-center">
-
-                {imagePreview && (
-                  <img
-                    src={imagePreview}
-                    alt="Selected File"
-                    className="w-full rounded-lg shadow-lg h-full object-cover"
-                  />
-                )}
-              </div>
-
-              {/* Form Inputs */}
-              <div className="w-full md:w-[65%] p-2">
-                <h1 className="my-1 text-lg">Project Title</h1>
-                <input
-        type="text"
-        className="w-full border border-gray-500 p-2 mb-4"
-        placeholder="Enter project title"
-        value={title}
-        onChange={handleTitleChange}
-      />
-
-                <h1 className="mt-4 mx-5 text-lg">How Would You Categorize This Project?</h1>
-                <div className="flex flex-wrap justify-between">
-
-{['Graphic Design', 'Web Development', 'App Development', 'UI/UX Design', 'Content Writing', 'SEO'].map((category, index) => (
-  <div key={index} className="w-full shadow-lg rounded-md sm:w-1/3 p-1 flex items-center">
-    <div className="w-full p-2 flex items-center">
-      <input
-        type="checkbox"
-        className="mx-2"
-        onChange={() => handleCategoryChange(category)}
-        checked={selectedCategories.includes(category)}
-      />
-      <label className="sm:text-[15px] lg:text-[15px]">{category}</label>
+        {/* Buttons */}
+        <div className="mt-4 flex justify-between">
+          <button
+            className="bg-white border border-gray-500 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-100"
+            onClick={closeModal}
+          >
+            Cancel
+          </button>
+          <button
+            className="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700"
+            onClick={handleUploadProject}
+          >
+            Publish
+          </button>
+        </div>
+      </div>
     </div>
-  </div>
-))}
-<div className="mt-4 w-full">
-  <label className="block text-lg font-semibold mb-2 text-gray-700">
-    ✍️ Write About Yourself <span className="text-sm text-gray-500">(100–200 words)</span>
-  </label>
-  <textarea
-    className="w-full border border-gray-300 rounded-md p-3 resize-none focus:outline-none focus:ring-2 focus:ring-blue-400"
-    placeholder="Tell us about your experience, skills, and what makes you unique..."
-    rows={6}
-    value={about}
-    onChange={handleAboutChange}
-  />
+  )}
+
+  {/* Uploaded Image View */}
+  {uploadedImageUrl && (
+    <div className="mt-6 text-center">
+      <h2 className="text-lg font-semibold mb-2">✅ Uploaded Image</h2>
+      <img src={uploadedImageUrl} alt="Uploaded" className="w-32 h-32 rounded-md mx-auto shadow-md" />
+    </div>
+  )}
 </div>
 
-                </div>
-              </div>
-            </div>
-
-            {/* Buttons */}
-            <div className="mt-4 flex justify-between">
-              <button className="bg-white text-black px-4 py-2 rounded-lg border border-gray-500" onClick={closeModal}>
-                Cancel
-              </button>
-              <button className="bg-green-600 text-white px-4 py-2 rounded-lg" onClick={handleUploadProject}>
-                Publish
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ✅ Show Uploaded Image after Cloudinary Upload */}
-      {uploadedImageUrl && (
-        <div className="mt-4 text-center">
-          <h2 className="text-lg font-semibold">Uploaded Image</h2>
-          <img src={uploadedImageUrl} alt="Uploaded" className="w-32 h-32 rounded-lg mx-auto" />
-        </div>
-      )}
-    </div>
   );
 }
 

@@ -5,6 +5,7 @@ import { Mycontext } from "../context/Mycontext";
 
 
 const Navbar = () => {
+  const username=localStorage.getItem('username')
   const navigate = useNavigate();
   const name = localStorage.getItem("username");
   const usertype = localStorage.getItem("accountType");
@@ -41,7 +42,7 @@ const Navbar = () => {
           <button
             className="bg-maincolor rounded-full w-[45px] h-[45px] text-white text-center uppercase font-bold text-[25px] mr-4"
           >
-            {"A"}
+            {username[0]}
           </button>
           
         </div>

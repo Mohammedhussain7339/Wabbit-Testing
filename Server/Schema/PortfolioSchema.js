@@ -22,6 +22,9 @@ const PortfolioSchema = new Schema(
     },
     about:{
       type:String,
+    },
+    url:{
+      type:String,
     }
   },
   { timestamps: true } 

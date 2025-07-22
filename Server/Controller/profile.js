@@ -23,9 +23,9 @@ export const profiledata = async (req, res) => {
     console.log("Received userId:", userId);
 
     // Validate required fields
-    if (!firstname || !lastname || !description) {
-      return res.status(400).json({ error: "Required fields are missing." });
-    }
+    // if (!firstname || !lastname || !description) {
+    //   return res.status(400).json({ error: "Required fields are missing." });
+    // }
 
     // Check if profile already exists for the given userId
     // let profile = await ProfileSchema.findOne({ _id }); // Find profile by _id

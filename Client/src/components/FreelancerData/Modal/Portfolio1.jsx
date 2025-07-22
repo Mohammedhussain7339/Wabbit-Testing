@@ -7,6 +7,7 @@ function Portfolio1() {
   const [portfolio, setPortfolio] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [showVideo, setShowVideo] = useState(false);
 
   useEffect(() => {
     if (!userId) {
@@ -19,7 +20,6 @@ function Portfolio1() {
       try {
         const res = await axios.get(`http://localhost:8000/api/portfolio/${userId}`);
         setPortfolio(res.data);
-        console.log(portfolio)
       } catch (error) {
         console.error("Error fetching portfolio:", error.message);
         setError("Failed to fetch portfolio.");
@@ -35,16 +35,52 @@ function Portfolio1() {
   if (error) return <p className="text-center text-red-500 mt-10">{error}</p>;
   if (!portfolio) return <p className="text-center mt-10">No portfolio found.</p>;
 
+  // Helper: Extract YouTube Video ID
+  const getYouTubeVideoId = (url) => {
+    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]+)/);
+    return match ? match[1] : null;
+  };
+
+  const videoId = getYouTubeVideoId(portfolio.url);
+
   return (
-    <div className="flex gap-4 flex-wrap justify-center p-4">
-      <div className="w-[300px] h-[300px] bg-white shadow-md p-2 rounded-md">
+    <div className="flex flex-col items-center gap-4 p-4">
+      {/* Image Card */}
+      <div className="w-[300px] bg-white shadow-md p-2 rounded-md">
         <img
           src={portfolio.portfolio}
           alt={portfolio.title}
-          className="w-full h-[80%] object-cover rounded-md"
+          className="w-full h-[240px] object-cover rounded-md"
         />
         <h1 className="text-center font-semibold mt-2">{portfolio.title}</h1>
       </div>
+
+      {/* Video URL & Click */}
+      {portfolio.url && (
+        <div className="text-center">
+          {!showVideo ? (
+            <button
+              className="text-blue-600 underline hover:text-blue-800 transition"
+              onClick={() => setShowVideo(true)}
+            >
+              ▶️ Watch Project Video
+            </button>
+          ) : (
+            videoId ? (
+              <div className="w-full max-w-[560px] aspect-video mt-4">
+                <iframe
+                  className="w-full h-full rounded-md shadow-md"
+                  src={`https://www.youtube.com/embed/${videoId}`}
+                  title="YouTube Video"
+                  allowFullScreen
+                />
+              </div>
+            ) : (
+              <p className="text-red-500">Invalid YouTube URL</p>
+            )
+          )}
+        </div>
+      )}
     </div>
   );
 }

@@ -3,9 +3,9 @@ import mongoose from "mongoose";
 
 export const profiledata = async (req, res) => {
   try {
-    const { userId, title, projectCategorise, portfolio, about } = req.body;
+    const { userId, title, projectCategorise, portfolio, about,url } = req.body;
 
-    if (!title || !projectCategorise || !portfolio || !about) {
+    if (!title || !projectCategorise || !portfolio || !about||!url) {
       return res.status(400).json({ error: "Required fields are missing." });
     }
 
@@ -16,6 +16,7 @@ export const profiledata = async (req, res) => {
       portfoliodata.projectCategorise = projectCategorise || portfoliodata.projectCategorise;
       portfoliodata.portfolio = portfolio || portfoliodata.portfolio;
       portfoliodata.about = about || portfoliodata.about;
+      portfoliodata.url=url || portfoliodata.url;
 
       await portfoliodata.save();
 
@@ -30,7 +31,8 @@ export const profiledata = async (req, res) => {
       title,
       projectCategorise,
       portfolio,
-      about
+      about,
+      url,
     });
 
     const savedProfile = await newProfile.save();

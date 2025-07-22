@@ -138,20 +138,20 @@ function Freelancer1() {
   };
 
   const [index, setIndex] = useState(true)
-const [showProfile, setShowProfile] = useState(false);
-
+const [showProfile, setShowProfile] = useState(true);
+console.log(showProfile)
 
   return (
     <>
 {profileId && showProfile ? (
   <Profileget index={showProfile} setIndex={setShowProfile} />
 ) : 
-        <form className="flex flex-col w-full min-h-screen 320:p-0 p-4" onSubmit={handleSubmit}>
+        <div className="flex flex-col w-full min-h-screen 320:p-0 p-4" >
 
           {/* -------------------data entry--------------------- */}
 
           <div className="w-full   sm:w-full lg:w-full flex flex-col p-6 rounded-lg shadow-lg">
-            {profileId ? <button className="bg-blue-400 w-16 p-1 rounded-full text-white" onClick={() => setShowProfile(true)}>Back</button> : null}
+            {profileId ? <button className="bg-blue-400 w-16 p-1 rounded-full text-white" onClick={() => setShowProfile(false)}>Back</button> : null}
             <div className="flex  flex-col sm:flex-row justify-between mb-4">
               <div className="w-full sm:w-[48%] mb-4 sm:mb-0">
                 <label
@@ -452,13 +452,13 @@ const [showProfile, setShowProfile] = useState(false);
 
             <button
               type="submit"
-              className="bg-maincolor text-white px-5 py-2 rounded-lg mt-3 mb-14">
+              className="bg-maincolor text-white px-5 py-2 rounded-lg mt-3 mb-14" onClick={handleSubmit}>
               Submit
             </button>
 
           </div>
           <ToastContainer />
-        </form>
+        </div>
       }
     </>
   );
