@@ -42,7 +42,11 @@ const Navbar = () => {
           <button
             className="bg-maincolor rounded-full w-[45px] h-[45px] text-white text-center uppercase font-bold text-[25px] mr-4"
           >
-            {username[0]}
+<button
+  className="bg-maincolor rounded-full w-[45px] h-[45px] text-white text-center uppercase font-bold text-[25px] mr-4"
+>
+  {username ? username[0] : "U"}
+</button>
           </button>
           
         </div>

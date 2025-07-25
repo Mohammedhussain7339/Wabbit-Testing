@@ -82,11 +82,9 @@ import Navbar from "../Home/Navbar/Navbar";
                   className="bg-white shadow-lg w-full md:w-[300px] lg:w-[400px] p-4 rounded-lg flex flex-col"
                 >
                   <div className="flex items-center">
-                    <img
-                      src={editor.image || "https://via.placeholder.com/100"}
-                      alt={editor.firstname || "Profile Image"}
-                      className="rounded-full shadow-lg w-14 h-14 sm:w-24 sm:h-24"
-                    />
+                  <div className="w-20 h-20 capitalize flex justify-center items-center text-white text-3xl rounded-full bg-gray-400">
+                    {editor.firstname[0]}
+                  </div>
                     <div className="ml-4">
                       <h1 className="text-lg capitalize sm:text-xl md:text-2xl text-left">
                         {editor.firstname} {editor.lastname}

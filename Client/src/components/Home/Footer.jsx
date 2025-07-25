@@ -1,26 +1,40 @@
 import React from "react";
 import logo from "../../assets/Home/Nav/navlogo.png";
-import { FaInstagram, FaFacebookF, FaLinkedinIn } from "react-icons/fa";
-import { FaXTwitter, FaYoutube } from "react-icons/fa6";
+import { FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaXTwitter, FaYoutube,FaWhatsapp } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
+  const suggestions = [
+  { label: "Video Editor", link: "/videoeditor" },
+  { label: "Photo Editor", link: "/photocard" },
+  { label: "Canva Expert", link: "/canvacard" },
+  { label: "Invitation Expert", link: "/invititioncard" },
+  { label: "Web Developer", link: "/webdeveloper" },
+  { label: "UI/UX Designer", link: "/uiux" },
+  { label: "Mockup", link: "/mockup" },
+  { label: "Graphic Designer", link: "/graphicdesigner" },
+
+];
+
   return (
     <div className="bg-black text-white font-nunito cursor-pointer">
       <div className="flex flex-wrap gap-6 items-start justify-center p-8 w-full">
         {/* Category Section */}
-        <div className="flex  w-[300px] flex-col  px-[50px] text-base sm:text-lg md:text-xl lg:text-2xl">
-          <ul className="space-y-1">
-            <li><strong>Category</strong></li>
-            <li>Video Editor</li>
-            <li>Photo Editor</li>
-            <li>Logo Designer</li>
-            <li>Mockups</li>
-            <li>Animator</li>
-            <li>Content Writer</li>
-            <li>Invitation Card</li>
-          </ul>
-        </div>
+{/* Category Section */}
+<div className="flex w-[300px] flex-col px-[50px] text-base sm:text-lg md:text-xl lg:text-2xl">
+  <ul className="space-y-1">
+    <li className="font-bold text-white mb-1">Category</li>
+    {suggestions.map((item, index) => (
+      <li key={index}>
+        <Link to={item.link} className="hover:underline text-white">
+          {item.label}
+        </Link>
+      </li>
+    ))}
+  </ul>
+</div>
+
 
         {/* For Client and Freelancer Section */}
         <div className="flex  w-[300px] flex-col items-center px-[50px] text-base sm:text-lg md:text-xl lg:text-2xl">
@@ -53,19 +67,19 @@ export default function Footer() {
 
           <div className="flex text-2xl gap-5 cursor-pointer mt-4">
             <i className="transition-all duration-300 ease-in-out hover:text-blue-500">
-              <FaLinkedinIn />
+              <Link to="https://www.linkedin.com/company/wabbit-india/?viewAsMember=true">              <FaLinkedinIn /></Link>
             </i>
             <i className="transition-all duration-300 ease-in-out hover:text-red-500">
               <FaYoutube />
             </i>
             <i className="transition-all duration-300 ease-in-out hover:text-blue-700">
-              <FaFacebookF />
+              <Link to="https://wa.link/3kgggn"><FaWhatsapp/></Link>
             </i>
             <i className="transition-all duration-300 ease-in-out hover:text-gray-500">
-              <FaXTwitter />
+              <Link to="https://x.com/Wabbit_in"><FaXTwitter /></Link>
             </i>
             <i className="transition-all duration-300 ease-in-out hover:text-pink-500">
-              <FaInstagram />
+             <Link to="https://www.instagram.com/wabbit.in/"> <FaInstagram /></Link>
             </i>
           </div>
         </div>

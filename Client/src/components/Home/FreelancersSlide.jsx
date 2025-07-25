@@ -1,5 +1,8 @@
 import React from 'react'
 import ulogo from "../../assets/Home/FindFreelance/img01.png";
+import slide1 from "../../assets/pagespng/daily-tasks.png"
+import slide2 from "../../assets/pagespng/flash.png"
+import slide3 from "../../assets/pagespng/Hiring-removebg-preview.png"
 
 export default function FreelancersSlide() {
   return (
@@ -19,7 +22,7 @@ export default function FreelancersSlide() {
         {/* Card 1 */}
         <div className="max-w-[400px] rounded-lg p-6 text-center transition-shadow duration-300 ease-in-out bg-white">
 
-          <img src={ulogo} alt="ulogo" className="mx-auto mb-4 h-24 w-24" />
+          <img src={slide1} alt="ulogo" className="mx-auto mb-4 h-24 w-24" />
 
           <h1 className="text-2xl lg:text-3xl font-bold mb-4 cursor-pointer">
             Quick Payments
@@ -36,7 +39,7 @@ export default function FreelancersSlide() {
         {/* Card 2 */}
         <div className="max-w-[400px] rounded-lg p-6 text-center  transition-shadow duration-300 ease-in-out bg-white">
 
-          <img src={ulogo} alt="ulogo" className="mx-auto mb-4 h-24 w-24" />
+          <img src={slide2} alt="ulogo" className="mx-auto mb-4 h-24 w-24" />
 
           <h1 className="text-2xl lg:text-3xl font-bold mb-4">
             Pay minimal fees
@@ -53,7 +56,7 @@ export default function FreelancersSlide() {
         {/* Card 3 */}
         <div className="max-w-[400px] rounded-lg p-6 text-center transition-shadow duration-300 ease-in-out bg-white">
 
-          <img src={ulogo} alt="ulogo" className="mx-auto mb-4 h-24 w-24" />
+          <img src={slide3} alt="ulogo" className="mx-auto mb-4 h-24 w-24" />
 
           <h1 className="text-2xl lg:text-3xl font-bold mb-4">
             Daily Projects

@@ -36,10 +36,13 @@ function Portfolio1() {
   if (!portfolio) return <p className="text-center mt-10">No portfolio found.</p>;
 
   // Helper: Extract YouTube Video ID
-  const getYouTubeVideoId = (url) => {
-    const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]+)/);
-    return match ? match[1] : null;
-  };
+const getYouTubeVideoId = (url) => {
+  if (!url || typeof url !== 'string') return null;
+  const match = url.match(
+    /(?:https?:\/\/)?(?:www\.)?(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{11})/
+  );
+  return match ? match[1] : null;
+};
 
   const videoId = getYouTubeVideoId(portfolio.url);
 

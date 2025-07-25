@@ -1,5 +1,8 @@
 import React from "react";
 import ulogo from "../../assets/Home/FindFreelance/img01.png";
+import slide4 from "../../assets/pagespng/mobile-transfer.png"
+import slide5 from "../../assets/pagespng/protection.png"
+import slide6 from "../../assets/pagespng/reduce-cost.png"
 
 export default function BusinessesSlide() {
   return (
@@ -19,7 +22,7 @@ export default function BusinessesSlide() {
 
         <div className="max-w-[400px] rounded-lg p-6 text-center transition-shadow duration-300 ease-in-out bg-white">
 
-          <img src={ulogo} alt="ulogo" className="mx-auto mb-4 h-24 w-24" />
+          <img src={slide4} alt="ulogo" className="mx-auto mb-4 h-24 w-24" />
 
           <h1 className="text-2xl lg:text-3xl font-bold mb-4">
             Delivery in 24 hours
@@ -36,7 +39,7 @@ export default function BusinessesSlide() {
 
         <div className="max-w-[400px] rounded-lg p-6 text-center  transition-shadow duration-300 ease-in-out bg-white">
 
-          <img src={ulogo} alt="ulogo" className="mx-auto mb-4 h-24 w-24" />
+          <img src={slide5} alt="ulogo" className="mx-auto mb-4 h-24 w-24" />
 
           <h1 className="text-2xl lg:text-3xl font-bold mb-4">
             Hire first, pay later
@@ -53,7 +56,7 @@ export default function BusinessesSlide() {
 
         <div className="max-w-[400px] rounded-lg p-6 text-center transition-shadow duration-300 ease-in-out bg-white">
 
-          <img src={ulogo} alt="ulogo" className="mx-auto mb-4 h-24 w-24" />
+          <img src={slide6} alt="ulogo" className="mx-auto mb-4 h-24 w-24" />
 
           <h1 className="text-2xl lg:text-3xl font-bold mb-4">
             Reliable and secure

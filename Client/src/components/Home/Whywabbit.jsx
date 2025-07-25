@@ -75,7 +75,7 @@ export default function Whywabbit() {
           </div>
 
           <button className='mx-6 my-11 h-[40px] w-[120px] bg-white text-maincolor rounded-lg text-[18px] font-semibold lg:mx-[70px]'>
-            Get details
+            Apply Now
           </button>
 
         </div>

@@ -48,7 +48,7 @@ export default function Mobilenav() {
   return (
     <ClickAwayListener onClickAway={handleClickAway}>
       <div
-        className={`fixed  top-[70px] z-[999]  shadow-lg transition-transform duration-500 ease-in-out ${isVisible ? 'translate-x-0' : '-translate-x-full'
+        className={`fixed  top-[70px] z-[10000] bg-white  shadow-lg transition-transform duration-500 ease-in-out ${isVisible ? 'translate-x-0' : '-translate-x-full'
           }`}
         style={{ height: '30%', width: '74%' }}
       >
@@ -57,7 +57,7 @@ export default function Mobilenav() {
             <Link to="/" className="font-nunito font-bold text-[20px]">
               Home
             </Link>
-            <Link to="/onboardingseller" className="font-nunito font-bold text-[20px]">
+            <Link to="/about" className="font-nunito font-bold text-[20px]">
               About
             </Link>
             <Link className="font-nunito font-bold text-[20px]">

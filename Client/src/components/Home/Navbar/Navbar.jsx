@@ -22,7 +22,7 @@ const Navbar = () => {
     setnewModal,
     setRegisterEmail,
     setRegisterUsername,
-    setRegisterPassword,
+    setRegisterPassword,setSideModal ,
     isModal, setIsModal, setUserData
   } = useContext(Mycontext);
   const token = localStorage.getItem("token");
@@ -61,6 +61,11 @@ const Navbar = () => {
     })
     setnewModal(false);
   };
+    const handleLoginSuccess = () => {
+    setIsModal(false); // Close login modal
+    setSideModal(false);
+    window.location.reload(); // Optionally reload to refresh navbar state
+  };
 
   const handleSideModalClose = () => {
     setSideModal(false);
@@ -73,7 +78,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="bg-white h-[70px] text-black flex items-center flex-row md:px-[30px] fixed top-0 w-[100%] z-20">
+    <div className="bg-white  h-[70px]  text-black flex items-center flex-row md:px-[30px] fixed top-0 w-[100%] z-20">
       <div className="w-[20%] flex items-center justify-center h-full md:hidden">
         <i
           className="fa-solid fa-bars text-[25px]"
