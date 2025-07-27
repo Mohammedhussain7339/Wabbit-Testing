@@ -20,6 +20,7 @@ import Portfolio from './components/FreelancerData/Modal/Portfolio1'
 import FreelancerMainPage from './components/FreelancerData/FreelancerMainPage';
 import Profileget from './components/Seller/Profile/Modals/profileget';
 import AdminPanel from './Admin-Dashboard/AdminPanel';
+import MonetizeSkills from './page/MonetizeSkills';
 // import PersonalNav from './components/personalinfo/Personalnav';
 
 // import Profileget from '../src/components/Seller/';
@@ -37,6 +38,7 @@ function App() {
 
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/MonetizeSkills" element={<MonetizeSkills/>}/>
             {/* <Route path="/profile" element={<PersonalNav />} /> */}
             {/* <Route path="/profileget" element={<Profileget />} /> */}
             <Route path='/onboardingseller' element={<Freelancedashboard />} />

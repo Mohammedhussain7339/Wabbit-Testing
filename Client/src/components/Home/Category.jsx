@@ -29,7 +29,7 @@ export default function Category() {
         <p className="text-center font-nunito sm:text-[25px] lg:text-2xl lg:text-start">
           Searching for work?
           <Link  
-            to=""
+            to="monetizeskills"
             className="text-green-600 underline underline-offset-4 font-bold"
           >
             Join Wabbit

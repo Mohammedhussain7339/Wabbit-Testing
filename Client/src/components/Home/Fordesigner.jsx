@@ -45,11 +45,12 @@ export default function Fordesigner() {
         {/* Buttons Section - Flex layout for button alignment */}
 
         <div className='flex mx-auto px-4 flex-col lg:flex-row justify-center lg:justify-evenly items-center w-full max-w-[90%] lg:max-w-[50%] my-6 space-y-4 lg:space-y-0'>
+                          <Link to="monetizeskills">
 
           <button className='py-3 px-4 w-full max-w-[170px] rounded-3xl bg-black text-white text-center' >
             Get started now
           </button>
-              
+             </Link> 
           <button className='py-3 px-4 w-full max-w-[170px] rounded-3xl bg-white text-black text-center'>
             Learn about hiring
           </button>
@@ -57,7 +58,7 @@ export default function Fordesigner() {
         </div>
 
         <p className='text-sm sm:text-base md:text-lg lg:text-xl cursor-pointer '>
-          Are you a Freelancer? <Link to='' className='font-semibold font-sans text-[15px] pl-2 text-black underline'>Join Wabbit</Link>
+          Are you a Freelancer? <Link to='monetizeskills' className='font-semibold font-sans text-[15px] pl-2 text-black underline'>Join Wabbit</Link>
         </p>
       </div>
 

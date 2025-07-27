@@ -33,7 +33,7 @@ const handleNavigate = (link) => {
 };
 
   return (
-    <div className='w-full   h-[80vh] mt-[100px] cursor-pointer flex justify-center items-center z-10'>
+<div className='w-full h-[80vh] mt-[100px] cursor-pointer flex justify-center items-center z-10'>
 
       <div className='max-sm:w-[100%]  justify-center  max-md:h-[80%] max-md:mt-[-200px] w-[90%] h-[100%] rounded-2xl  flex flex-col items-center relative bg-bgmain overflow-hidden'>
 
@@ -128,7 +128,9 @@ const handleNavigate = (link) => {
 
             <h1 className="pl-9 font-nunito font-bold">Trusted By</h1>
             {Brand.map((brandItem, index) => (
-              <h1 key={index}>
+              <h1 key={index} className=' w-[100px] h-[30px] flex justify-center' >
+                <img src={brandItem.image} alt=""     className="w-[80px]  h-[25px] object-contain"  // you can adjust size here
+ />
               </h1>
             ))}
           </div>
