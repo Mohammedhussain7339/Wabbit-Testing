@@ -84,7 +84,7 @@ if (!selectedFile || !title || selectedCategories.length === 0 || !about || !use
     setUploadedImageUrl(imageUrl);
 
     // Save to backend
-    const response = await axios.post("http://localhost:8000/api/portfolio", {
+    const response = await axios.post("https://wabbit.onrender.com/api/portfolio", {
       userId,
       title,
       projectCategorise: selectedCategories,

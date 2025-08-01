@@ -18,7 +18,7 @@ function Portfolio1() {
 
     const fetchProfile = async () => {
       try {
-        const res = await axios.get(`http://localhost:8000/api/portfolio/${userId}`);
+        const res = await axios.get(`https://wabbit.onrender.com/api/portfolio/${userId}`);
         setPortfolio(res.data);
       } catch (error) {
         console.error("Error fetching portfolio:", error.message);

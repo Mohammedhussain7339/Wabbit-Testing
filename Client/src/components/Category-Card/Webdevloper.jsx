@@ -20,10 +20,8 @@ const handleViewProfile = (userId) => {
     setLoading(true);
     setError(null);
 
-    try {
-      const response = await axios.get(
-  `http://localhost:8000/api/getprofile?skills=${skill}&check=true`
-      );
+    try { const response = await axios.get(`https://wabbit-backend.onrender.com/api/getprofile?skills=${skill}&check=true`
+);
       setProfiles(response.data.data);
       console.log(response.data.data)
     } catch (err) {

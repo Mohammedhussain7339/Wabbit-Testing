@@ -28,11 +28,7 @@ export default function Profile() {
   const fetchdata = async () => {
     if (profileId) {
       try {
-        const response = await axios.get(
-          `http://localhost:8000/api/getprofileimg?id=${profileId}`
-        );
-
-
+        const response = await axios.get(`https://wabbit.onrender.com/api/getprofileimg?id=${profileId}`);
         const ProfileImg = response.data.imageUrl;
 
         setProfileImg(ProfileImg);

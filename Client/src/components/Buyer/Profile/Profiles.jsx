@@ -44,7 +44,8 @@ function profiles() {
     const payload = { ...formData, userId };
 
     try {
-        const response = await axios.post("http://localhost:8000/api/normaluser", payload);
+      const response = await axios.post("https://wabbit-backend.onrender.com/api/normaluser", payload);
+
         if (response.status === 200 || response.status === 201) {
           localStorage.setItem("profileId", response.data.profile_id);
           console.log("Profile ID saved to localStorage:", response.data.profile_id);

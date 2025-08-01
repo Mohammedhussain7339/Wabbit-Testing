@@ -18,9 +18,7 @@ function Freelancer3() {
   
     try {
       const response = await axios.get(
-        `http://localhost:8000/api/getprofile?userId=${userId}`
-      );
-  
+  `https://wabbit.onrender.com/api/getprofile?userId=${userId}`); 
       // Ensure profiles is always an array
       const fetchedProfiles = Array.isArray(response.data.data)
         ? response.data.data

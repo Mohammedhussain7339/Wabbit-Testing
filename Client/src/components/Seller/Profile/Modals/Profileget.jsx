@@ -12,9 +12,9 @@ function Profileget({ index, setIndex }) {
   const fetchdata = async () => {
     if (profileId) {
       try {
-        const response = await axios.get(
-          `http://localhost:8000/api/getprofile?id=${profileId}`
-        );
+       const response = await axios.get(
+  `https://wabbit.onrender.com/api/getprofile?id=${profileId}`
+);
         
         const data = response.data?.data;
 

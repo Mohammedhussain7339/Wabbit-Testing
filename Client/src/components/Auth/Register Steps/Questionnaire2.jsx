@@ -89,7 +89,7 @@ const Questionnaire2 = ({ goBackToModal }) => {
         purpose: userData.purpose
       });
   
-      const response = await fetch("http://localhost:8000/auth/register", {
+      const response = await fetch("https://wabbit-backend.onrender.com/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -30,7 +30,7 @@ const RegisterStep2 = () => {
     setIsChecking(true);
     try {
       const response = await fetch(
-        `http://localhost:8000/auth/check-username/${registerUsername}`
+        `https://wabbit-backend.onrender.com/auth/check-username/${registerUsername}`
       );
 
       if (!response.ok) {

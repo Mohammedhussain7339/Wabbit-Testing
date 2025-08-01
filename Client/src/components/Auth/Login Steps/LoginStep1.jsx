@@ -22,7 +22,7 @@ const LoginStep1 = () => {
 
     try {
       // Sending a POST request to the login API with the provided email/username and password
-      const response = await fetch("http://localhost:8000/auth/login", {
+      const response = await fetch("https://wabbit-backend.onrender.com/auth/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

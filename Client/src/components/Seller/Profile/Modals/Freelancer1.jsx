@@ -95,7 +95,7 @@ function Freelancer1() {
 
 
     axios
-      .post("http://localhost:8000/api/profile", payload,)
+      .post("https://wabbit.onrender.com/api/profile", payload)
       .then((response) => {
         toast.success("Form submitted successfully:");
 

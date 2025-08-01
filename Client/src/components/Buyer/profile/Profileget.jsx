@@ -9,7 +9,7 @@ function Profileget({index,setIndex}) {
   useEffect(() => {
     if (!profileId) return;
   
-    axios.get(`http://localhost:8000/api/normaluser?id=${profileId}`)
+    axios.get(`https://wabbit-backend.onrender.com/api/normaluser?id=${profileId}`)
       .then(response => {
         console.log(response.data); // Check the structure of response
         setProfile(response.data.profile); // Extract `profile` from response

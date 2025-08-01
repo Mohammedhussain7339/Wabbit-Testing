@@ -21,8 +21,9 @@ export default function Logocard() {
 
     try {
       const response = await axios.get(
-  `http://localhost:8000/api/getprofile?skills=${skill}&check=true`
-      );
+  `https://wabbit-backend.onrender.com/api/getprofile?skills=${skill}&check=true`
+);
+
       setProfiles(response.data.data);
       console.log(response.data.data)
     } catch (err) {
