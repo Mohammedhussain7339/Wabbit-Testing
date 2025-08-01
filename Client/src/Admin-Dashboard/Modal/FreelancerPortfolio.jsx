@@ -8,7 +8,7 @@ export default function FreelancerPortfolio() {
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/all");
+        const response = await axios.get("https://wabbit.onrender.com/api/all");
         setProfiles(response.data.data);
       } catch (err) {
         console.error("Error fetching profiles 🔴:", err);
@@ -21,10 +21,10 @@ export default function FreelancerPortfolio() {
 
   const handleToggle = async (id, currentCheck) => {
     try {
-      const res = await axios.put("http://localhost:8000/api/updateProfileCheck", {
-        id,
-        check: !currentCheck,
-      });
+     const res = await axios.put("https://wabbit.onrender.com/api/updateProfileCheck", {
+  id,
+  check: !currentCheck,
+});
 
       if (res.status === 200) {
         setProfiles((prev) =>
