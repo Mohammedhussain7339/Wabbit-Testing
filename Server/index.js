@@ -21,7 +21,7 @@ app.use((req, res, next) => {
   next();
 });
 
-  app.use(cors({ origin: "http://localhost:5173" })); // Replace with your frontend's URL
+  app.use(cors({ origin: "https://wabbit.onrender.com/" })); // Replace with your frontend's URL
   await connectToDb();
 
   app.use("/auth" , authRouter);
