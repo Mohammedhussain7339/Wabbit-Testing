@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { countries } from "../../../../../public/data/country";
-import Profileget from "./profileget";
+import Profileget from "./Profileget";
 import axios from "axios";
 import { Mycontext } from "../../../../context/Mycontext";
 import { BiSolidEdit } from "react-icons/bi";
