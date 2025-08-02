@@ -18,7 +18,7 @@ import Profile from './page/Profile';
 import GetProfile from "./components/Buyer/profile/Profileget"
 import Portfolio from './components/FreelancerData/Modal/Portfolio1'
 import FreelancerMainPage from './components/FreelancerData/FreelancerMainPage';
-import Profileget from './components/Seller/Profile/Modals/profileget';
+import Profileget from './components/Seller/Profile/Modals/Profileget';
 import AdminPanel from './Admin-Dashboard/AdminPanel';
 import MonetizeSkills from './page/MonetizeSkills';
 // import PersonalNav from './components/personalinfo/Personalnav';
