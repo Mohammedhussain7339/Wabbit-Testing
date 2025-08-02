@@ -68,8 +68,8 @@ function Profiles() {
 
   return (
     <>
-      {profileId && index == true ? <Profilenget index={index} setIndex={setIndex} >
-      </Profilenget> :
+      {profileId && index == true ? <Profileget index={index} setIndex={setIndex} >
+      </Profileget> :
 
     <div className=" max-md:w-[100vw]  h-full w-[81vw] flex bg-bgmain">
 
