@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BiSolidEdit } from "react-icons/bi";
-import ProfileGet from './components/Seller/Profile/Modals/ProfileGet';
 
 import axios from "axios";
 function Profileget({ index, setIndex }) {
