@@ -11,7 +11,7 @@ import Subscription from '../components/Buyer/Subscription';
 import HelpSupport from '../components/Buyer/HelpSupport';
 import Utilavbar from '../util/Utilnavbar';
 import UtilmobileNav from '../util/Utilmobilenav'
-import Profiles from "../components/Buyer/profile/Profiles"
+import Profiles from "../components/Buyer/Profile/Profiles"
 export default function Buyerprofile() {
 
     const { activeComponent, setActiveComponent, activeId, setActiveId, isutilnavbar} = useContext(Mycontext);
