@@ -15,7 +15,7 @@ import Canvacard from './components/Category-Card/Canvacard';
 import Webdevloper from './components/Category-Card/Webdevloper';
 import UIUX from './components/Category-Card/UIUX';
 import Profile from './page/Profile';
-import GetProfile from "./components/Buyer/profile/Profileget"
+import GetProfile from "./components/Buyer/Profile/Profileget"
 import Portfolio from './components/FreelancerData/Modal/Portfolio1'
 import FreelancerMainPage from './components/FreelancerData/FreelancerMainPage';
 import Profileget from './components/Seller/Profile/Modals/Profileget';
