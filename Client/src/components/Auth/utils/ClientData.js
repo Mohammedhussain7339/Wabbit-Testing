@@ -7,7 +7,7 @@ import home from "../../../assets/Auth/Asset for 3rd modal/home.png";
 import house from "../../../assets/Auth/Asset for 3rd modal/house.png";
 import callme from "../../../assets/Auth/Asset for 3rd modal/callme.png";
 import apartments from "../../../assets/Auth/Asset for 3rd modal/apartments.png";
-import business_management from "../../../assets/Auth/Asset-4th-modal/businessmanagement.png";
+import business_management from "../../../assets/Auth/Asset-4th-Modal/businessmanagement.png";
 import telescope from "../../../assets/Auth/Asset-4th-modal/tele.png";
 import folder_management from "../../../assets/Auth/Asset-4th-modal/folder.png";
 import effort from "../../../assets/Auth/For Freelancer/2nd - Modal/effort.png";
