@@ -1,9 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
-import Profileget from "./profile/Profileget";
+import Profilenget from "./Profileget";
 
-
-function Profiles() {
+function profiles() {
   const userId = localStorage.getItem("_id");
   const profileId = localStorage.getItem("profileId")
   const [formData, setFormData] = useState({
@@ -68,8 +67,8 @@ function Profiles() {
 
   return (
     <>
-      {profileId && index == true ? <Profileget index={index} setIndex={setIndex} >
-      </Profileget> :
+      {profileId && index == true ? <Profilenget index={index} setIndex={setIndex} >
+      </Profilenget> :
 
     <div className=" max-md:w-[100vw]  h-full w-[81vw] flex bg-bgmain">
 
@@ -239,4 +238,4 @@ function Profiles() {
   );
 }
 
-export default Profiles;
+export default profiles;
