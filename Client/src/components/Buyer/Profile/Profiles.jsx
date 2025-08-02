@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import Profileget from "./profileget";
+import Profileget from "./Profileget";
 
 
 function Profiles() {
