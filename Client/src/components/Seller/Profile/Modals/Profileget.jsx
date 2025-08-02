@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { BiSolidEdit } from "react-icons/bi";
+import ProfileGet from './components/Seller/Profile/Modals/ProfileGet';
 
 import axios from "axios";
 function Profileget({ index, setIndex }) {
@@ -15,7 +16,7 @@ function Profileget({ index, setIndex }) {
        const response = await axios.get(
   `https://wabbit.onrender.com/api/getprofile?id=${profileId}`
 );
-        
+              
         const data = response.data?.data;
 
         // If data is an object, wrap it in an array to ensure compatibility with .map()
