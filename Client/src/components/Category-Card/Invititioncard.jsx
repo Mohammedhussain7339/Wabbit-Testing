@@ -2,6 +2,7 @@ import React, { useEffect,useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar from "../Home/Navbar/Navbar";
+import BASE_URL from "../../services/url";
 export default function Invitioncard() {
 
   const [skills, setSkills] = useState("Invitation Card"); // Default to "Photo Editing"
@@ -15,29 +16,34 @@ export default function Invitioncard() {
   
 
   // Fetch profiles based on skillswork
-  const fetchProfiles = async (skill) => {
-    setLoading(true);
-    setError(null);
+const fetchProfiles = async (skill) => {
+  setLoading(true);
+  setError(null);
 
-    try {
+  try {
     const response = await axios.get(
-  `https://wabbit-backend.onrender.com/api/getprofile?skills=${skill}&check=true`
-);
+      `${BASE_URL}/api/getprofile`,
+      {
+        params: { skills: skill, check: true },
+        withCredentials: true,
+      }
+    );
+    setProfiles(response.data.data);
+    console.log("Profiles fetched:", response.data.data);
+  } catch (err) {
+    console.error("Fetch error:", err);
+    setError(err.response?.data?.error || "Error fetching profiles");
+  } finally {
+    setLoading(false);
+  }
+};
 
-      setProfiles(response.data.data);
-      console.log(response.data.data)
-    } catch (err) {
-      setError(err.response?.data?.error || "Error fetching profiles");
-    } finally {
-      setLoading(false);
-    }
-  };
+useEffect(() => {
+  if (skills) {
+    fetchProfiles(skills);
+  }
+}, [skills]);
 
-  useEffect(() => {
-    if (skills) {
-      fetchProfiles(skills);
-    }
-  }, [skills]);
 
   const videoCategories = [
     "Wedding Invitation",
