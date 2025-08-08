@@ -1,5 +1,6 @@
 import {useEffect,useState} from "react";
 import { useLocation,useNavigate } from "react-router-dom";
+import BASE_URL from "../../services/url";
 import axios from "axios";
 import Navbar from "../Home/Navbar/Navbar";
 export default function Logocard() {
@@ -15,23 +16,27 @@ export default function Logocard() {
   
 
   // Fetch profiles based on skillswork
-  const fetchProfiles = async (skill) => {
-    setLoading(true);
-    setError(null);
+const fetchProfiles = async (skill) => {
+  setLoading(true);
+  setError(null);
 
-    try {
-      const response = await axios.get(
-  `https://wabbit-backend.onrender.com/api/getprofile?skills=${skill}&check=true`
-);
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/api/getprofile`,
+      {
+        params: { skills: skill, check: true },
+      }
+    );
 
-      setProfiles(response.data.data);
-      console.log(response.data.data)
-    } catch (err) {
-      setError(err.response?.data?.error || "Error fetching profiles");
-    } finally {
-      setLoading(false);
-    }
-  };
+    setProfiles(response.data.data);
+    console.log("✅ Profiles fetched:", response.data.data);
+  } catch (err) {
+    console.error("❌ Axios error:", err);
+    setError(err.response?.data?.error || "Error fetching profiles");
+  } finally {
+    setLoading(false);
+  }
+};
 
   useEffect(() => {
     if (skills) {

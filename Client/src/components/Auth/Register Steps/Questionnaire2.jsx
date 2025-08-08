@@ -3,7 +3,7 @@ import { questionsData2 } from "../utils/ClientData";
 import { Mycontext } from "../../../context/Mycontext";
 import greatDesign from "../../../assets/Auth/For Freelancer/4th - Modal/greatDesign.png";
 import { useNavigate } from "react-router";
-
+import BASE_URL from "../../../services/url";
 const Questionnaire2 = ({ goBackToModal }) => {
   const navigate = useNavigate();
   const {
@@ -89,7 +89,7 @@ const Questionnaire2 = ({ goBackToModal }) => {
         purpose: userData.purpose
       });
   
-      const response = await fetch("https://wabbit-backend.onrender.com/auth/register", {
+      const response = await fetch(`${BASE_URL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

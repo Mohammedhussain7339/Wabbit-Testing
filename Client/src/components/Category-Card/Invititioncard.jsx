@@ -20,14 +20,9 @@ const fetchProfiles = async (skill) => {
   setLoading(true);
   setError(null);
 
-  try {
-    const response = await axios.get(
-      `${BASE_URL}/api/getprofile`,
-      {
-        params: { skills: skill, check: true },
-        withCredentials: true,
-      }
-    );
+    try {const response = await axios.get(
+  `${BASE_URL}/api/getprofile?skills=${skill}&check=true`
+);
     setProfiles(response.data.data);
     console.log("Profiles fetched:", response.data.data);
   } catch (err) {

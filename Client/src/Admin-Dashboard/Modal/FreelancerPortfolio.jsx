@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import BASE_URL from "../../services/url";
 export default function FreelancerPortfolio() {
   const [profiles, setProfiles] = useState([]);
   const [error, setError] = useState("");
@@ -8,7 +8,7 @@ export default function FreelancerPortfolio() {
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        const response = await axios.get("https://wabbit.onrender.com/api/all");
+        const response = await axios.get(`${BASE_URL}/api/all`);
         setProfiles(response.data.data);
       } catch (err) {
         console.error("Error fetching profiles 🔴:", err);
@@ -21,7 +21,7 @@ export default function FreelancerPortfolio() {
 
   const handleToggle = async (id, currentCheck) => {
     try {
-     const res = await axios.put("https://wabbit.onrender.com/api/updateProfileCheck", {
+     const res = await axios.put(`${BASE_URL}/api/updateProfileCheck`, {
   id,
   check: !currentCheck,
 });

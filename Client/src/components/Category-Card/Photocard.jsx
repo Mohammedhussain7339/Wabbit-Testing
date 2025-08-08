@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import BASE_URL from "../../services/url";
 import Navbar from "../Home/Navbar/Navbar";
 
 export default function Photocard() {
@@ -21,7 +22,7 @@ const navigate=useNavigate();
 
     try {
 const response = await axios.get(
-  `https://wabbit-backend.onrender.com/api/getprofile?skills=${skill}&check=true`
+  `${BASE_URL}/api/getprofile?skills=${skill}&check=true`
 );
 
       setProfiles(response.data.data);

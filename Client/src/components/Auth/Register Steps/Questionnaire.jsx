@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { questionsData } from "../utils/ClientData";
 import { Mycontext } from "../../../context/Mycontext";
-
+import BASE_URL from "../../../services/url";
 const Questionnaire = ({ goBackToModal }) => {
   const {
     userData,
@@ -45,7 +45,7 @@ const Questionnaire = ({ goBackToModal }) => {
   // Register the user using the API
   const registerUser = async () => {
     try {
-      const response = await fetch("https://wabbit-backend.onrender.com/auth/register", {
+      const response = await fetch(`${BASE_URL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

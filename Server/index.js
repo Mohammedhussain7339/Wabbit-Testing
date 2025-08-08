@@ -11,21 +11,19 @@ import connectToDb from "./db/Db.js";
 dotenv.config();
 
 const port = process.env.PORT || 3000;
-const BASE_URL = process.env.BASE_URL || "http://localhost:5173";
+const BASE_URL = process.env.BASE_URL ;
 
 // ✅ Initialize express app
 const app = express();
 
 // ✅ Define proper CORS options
-const corsOptions = {
-  origin: [BASE_URL, "http://localhost:5173", "https://wabbit-frontend.onrender.com"],
-  credentials: true,
-  optionsSuccessStatus: 200,
-};
 
-// ✅ Apply middleware
+const corsOptions = {
+  origin: ['http://localhost:5173', BASE_URL],
+  optionsSuccessStatus: 200
+};
 app.use(cors(corsOptions));
-app.use(express.json());
+app.use(express.json()); // Make sure you have this to parse JSON bodies
 
 // ✅ Wrap startup logic in async function
 const startServer = async () => {

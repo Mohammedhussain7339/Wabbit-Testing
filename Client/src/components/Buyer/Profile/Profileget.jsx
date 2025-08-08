@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-
+import BASE_URL from "../../../services/url";
 function Profileget({index,setIndex}) {
   const profileId = localStorage.getItem("profileId");
   console.log(profileId)
@@ -9,7 +9,7 @@ function Profileget({index,setIndex}) {
   useEffect(() => {
     if (!profileId) return;
   
-    axios.get(`https://wabbit-backend.onrender.com/api/normaluser?id=${profileId}`)
+    axios.get(`${BASE_URL}/api/normaluser?id=${profileId}`)
       .then(response => {
         console.log(response.data); // Check the structure of response
         setProfile(response.data.profile); // Extract `profile` from response

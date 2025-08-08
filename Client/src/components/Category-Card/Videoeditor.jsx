@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation,useNavigate } from "react-router-dom";
 import ClickAwayListener from "react-click-away-listener";
+import BASE_URL from "../../services/url";
 import Navbar from "../Home/Navbar/Navbar";
 import FAQContent from "../Requirement/FAQContent";
 import axios from "axios";
@@ -21,7 +22,7 @@ const navigate=useNavigate();
     setError(null);
 
     try {const response = await axios.get(
-  `https://wabbit-backend.onrender.com/api/getprofile?skills=${skill}&check=true`
+  `${BASE_URL}/api/getprofile?skills=${skill}&check=true`
 );
       setProfiles(response.data.data);
       console.log(response.data.data)

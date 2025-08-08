@@ -3,7 +3,7 @@ import { Mycontext } from "../../../context/Mycontext";
 import { FaArrowLeftLong } from "react-icons/fa6";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import BASE_URL from "../../../services/url";
 const RegisterStep2 = () => {
   const {
     setRegisterStep,
@@ -30,7 +30,7 @@ const RegisterStep2 = () => {
     setIsChecking(true);
     try {
       const response = await fetch(
-        `https://wabbit-backend.onrender.com/auth/check-username/${registerUsername}`
+        `${BASE_URL}/auth/check-username/${registerUsername}`
       );
 
       if (!response.ok) {

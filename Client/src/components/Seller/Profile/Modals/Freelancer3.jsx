@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-
+import BASE_URL from "../../../../services/url";
 function Freelancer3() {
   const [profiles, setProfiles] = useState([]);
   const [error, setError] = useState(null);
@@ -18,7 +18,7 @@ function Freelancer3() {
   
     try {
       const response = await axios.get(
-  `https://wabbit.onrender.com/api/getprofile?userId=${userId}`); 
+  `${BASE_URL}/api/getprofile?userId=${userId}`); 
       // Ensure profiles is always an array
       const fetchedProfiles = Array.isArray(response.data.data)
         ? response.data.data

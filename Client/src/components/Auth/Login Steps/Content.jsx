@@ -11,7 +11,7 @@ const Content = () => {
 const handleSuccess = async (credentialResponse) => {
   const decoded = jwtDecode(credentialResponse.credential);
 
-  const res = await axios.post("https://wabbit-backend.onrender.com/api/google-login", {
+  const res = await axios.post(`${BASE_URL}/api/google-login`, {
     name: decoded.name,
     email: decoded.email,
     googleId: decoded.sub,

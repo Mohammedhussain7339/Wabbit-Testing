@@ -1,5 +1,6 @@
 import { useLocation,useNavigate } from "react-router-dom";
 import {useEffect,useState} from "react";
+import BASE_URL from "../../services/url";
 import axios from "axios";
 import Navbar from "../Home/Navbar/Navbar";
 
@@ -15,20 +16,24 @@ import Navbar from "../Home/Navbar/Navbar";
 };
 
       // Fetch profiles based on skillswork
-      const fetchProfiles = async (skill) => {
-        setLoading(true);
-        setError(null);
-    
-        try {
-          const response = await axios.get(`https://wabbit-backend.onrender.com/api/getprofile?skills=${skill}&check=true`);
-          setProfiles(response.data.data);
-          console.log(response.data.data)
-        } catch (err) {
-          setError(err.response?.data?.error || "Error fetching profiles");
-        } finally {
-          setLoading(false);
-        }
-      };
+const fetchProfiles = async (skill) => {
+  setLoading(true);
+  setError(null);
+
+    try {const response = await axios.get(
+  `${BASE_URL}/api/getprofile?skills=${skill}&check=true`
+);
+
+    setProfiles(response.data.data);
+    console.log("✅ Profiles fetched:", response.data.data);
+  } catch (err) {
+    console.error("❌ Axios error:", err);
+    setError(err.response?.data?.error || "Error fetching profiles");
+  } finally {
+    setLoading(false);
+  }
+};
+
     
       useEffect(() => {
         if (skillswork) {

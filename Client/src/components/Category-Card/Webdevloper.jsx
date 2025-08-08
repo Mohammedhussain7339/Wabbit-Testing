@@ -2,6 +2,7 @@ import React from 'react'
 import { useContext, useEffect, useState } from "react";
 import { Link, useLocation,useNavigate } from "react-router-dom";
 import ClickAwayListener from "react-click-away-listener";
+import BASE_URL from '../../services/url';
 import Navbar from "../Home/Navbar/Navbar";
 import axios from 'axios';
 function Webdevloper() {
@@ -20,7 +21,7 @@ const handleViewProfile = (userId) => {
     setLoading(true);
     setError(null);
 
-    try { const response = await axios.get(`https://wabbit-backend.onrender.com/api/getprofile?skills=${skill}&check=true`
+    try { const response = await axios.get(`${BASE_URL}/api/getprofile?skills=${skill}&check=true`
 );
       setProfiles(response.data.data);
       console.log(response.data.data)

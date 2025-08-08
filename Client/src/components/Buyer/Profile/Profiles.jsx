@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import Profilenget from "./Profileget";
-
+import BASE_URL from "../../../services/url";
 function profiles() {
   const userId = localStorage.getItem("_id");
   const profileId = localStorage.getItem("profileId")
@@ -44,7 +44,7 @@ function profiles() {
     const payload = { ...formData, userId };
 
     try {
-      const response = await axios.post("https://wabbit-backend.onrender.com/api/normaluser", payload);
+      const response = await axios.post(`${BASE_URL}/api/normaluser`, payload);
 
         if (response.status === 200 || response.status === 201) {
           localStorage.setItem("profileId", response.data.profile_id);

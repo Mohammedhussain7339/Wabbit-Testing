@@ -4,6 +4,7 @@ import Freelancer1 from "../Profile/Modals/Freelancer1";
 import Freelancer2 from "../Profile/Modals/Freelancer2";
 import Freelancer3 from "../Profile/Modals/Freelancer3";
 import axios from "axios";
+import BASE_URL from "../../../services/url";
 
 export default function Profile() {
   const [profileImg, setProfileImg] = useState("");
@@ -28,7 +29,7 @@ export default function Profile() {
   const fetchdata = async () => {
     if (profileId) {
       try {
-        const response = await axios.get(`https://wabbit.onrender.com/api/getprofileimg?id=${profileId}`);
+        const response = await axios.get(`${BASE_URL}/api/getprofileimg?id=${profileId}`);
         const ProfileImg = response.data.imageUrl;
 
         setProfileImg(ProfileImg);

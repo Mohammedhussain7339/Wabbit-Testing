@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../Home/Navbar/Navbar";
+import BASE_URL from "../../services/url";
 import axios from "axios";
 export default function UIUX() {
   const [profiles, setProfiles] = useState([]);
@@ -20,7 +21,7 @@ const navigate=useNavigate();
 
     try {
 const response = await axios.get(
-  `https://wabbit-backend.onrender.com/api/getprofile?skills=${skill}&check=true`
+  `${BASE_URL}/api/getprofile?skills=${skill}&check=true`
 );
 
       setProfiles(response.data.data);

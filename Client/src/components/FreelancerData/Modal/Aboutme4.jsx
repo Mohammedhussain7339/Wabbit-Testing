@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from "react-router-dom";
-
+import BASE_URL from '../../../services/url';
 function Aboutme4() {
     const { userId } = useParams();
     const [portfolio, setPortfolio] = useState(null);
@@ -17,7 +17,7 @@ function Aboutme4() {
   
       const fetchProfile = async () => {
         try {
-          const res = await axios.get(`https://wabbit.onrender.com/api/portfolio/${userId}`);
+          const res = await axios.get(`${BASE_URL}/api/portfolio/${userId}`);
           setPortfolio(res.data);
           console.log(portfolio)
         } catch (error) {

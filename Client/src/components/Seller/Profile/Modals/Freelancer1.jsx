@@ -5,7 +5,7 @@ import axios from "axios";
 import { Mycontext } from "../../../../context/Mycontext";
 import { BiSolidEdit } from "react-icons/bi";
 import { ToastContainer, toast } from "react-toastify";
-
+import BASE_URL from "../../../../services/url";
 function Freelancer1() {
 
   const { imageUrl ,handleFileChange} = useContext(Mycontext);
@@ -95,7 +95,7 @@ function Freelancer1() {
 
 
     axios
-      .post("https://wabbit.onrender.com/api/profile", payload)
+      .post(`${BASE_URL}/api/profile`, payload)
       .then((response) => {
         toast.success("Form submitted successfully:");
 
