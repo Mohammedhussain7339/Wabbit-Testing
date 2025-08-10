@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FaPlus } from 'react-icons/fa'; // Importing plus icon from react-icons
+import BASE_URL from '../../../../services/url';
 import axios from 'axios';
 function Freelancer2() {
   const fileInputRef = useRef(null);
